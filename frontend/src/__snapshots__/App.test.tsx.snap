@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App fetch player data on error from the server should render an error message 1`] = `
+<main
+  class="App"
+>
+  <header
+    class="App-header"
+  >
+    <h1>
+      Players
+    </h1>
+  </header>
+  <section
+    class="error"
+  >
+    fake error message
+  </section>
+</main>
+`;
+
+exports[`App fetch player data renders loading screen 1`] = `
+<main
+  class="App"
+>
+  <div
+    class="loading"
+  >
+    Loading...
+  </div>
+</main>
+`;
+
+exports[`App fetch player data renders players component 1`] = `
+<main
+  class="App"
+>
+  <header
+    class="App-header"
+  >
+    <h1>
+      Players
+    </h1>
+  </header>
+  <section
+    class="players"
+  >
+    <table
+      class="players-table"
+    >
+      <thead>
+        <tr>
+          <th>
+            Player's Name
+          </th>
+          <th>
+            Player's team abbreviation
+          </th>
+          <th>
+            Player's postion
+          </th>
+          <th>
+            Rushing Attempts
+          </th>
+          <th>
+            Rushing Attempts Per Game Avg
+          </th>
+          <th>
+            Total Rushing Yards
+          </th>
+          <th>
+            Rushing Avg Yards Per Attempt
+          </th>
+          <th>
+            Rushing Yards Per Game
+          </th>
+          <th>
+            Total Rushing Touchdowns
+          </th>
+          <th>
+            Longest Rush
+          </th>
+          <th>
+            Rushing First Downs
+          </th>
+          <th>
+            Rushing First Down %
+          </th>
+          <th>
+            Rushing 20+ Yards Each
+          </th>
+          <th>
+            Rushing 40+ Yards Each
+          </th>
+          <th>
+            Rushing Fumbles
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            3
+          </td>
+          <td>
+            0.8
+          </td>
+          <td>
+            -0.7
+          </td>
+          <td>
+            0
+          </td>
+          <td>
+            0.0
+          </td>
+          <td>
+            0
+          </td>
+          <td>
+            1
+          </td>
+          <td>
+            0
+          </td>
+          <td>
+            Brett Hundley
+          </td>
+          <td>
+            QB
+          </td>
+          <td>
+            0
+          </td>
+          <td>
+            GB
+          </td>
+          <td>
+            0
+          </td>
+          <td>
+            -2
+          </td>
+          <td>
+            -0.5
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+`;
