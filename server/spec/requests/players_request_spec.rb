@@ -45,5 +45,42 @@ RSpec.describe "Players", type: :request do
         end
       end
     end
+
+    context 'when sorting' do
+      before(:each) do
+        @test_player = create(
+          :player, player:
+          "Michelle #{Faker::Name.last_name}",
+          yds: 11,
+          td: -20
+        )
+
+        create_list(:player, 10)
+      end
+
+      it 'sort by Yds on all players' do
+        get "/players?sort_by=yds&sort_by_dir=desc"
+
+        json = JSON.parse(response.body)
+
+        expect(
+          json['data'].first['attributes']['player']
+        ).to eq(@test_player['player'])
+
+        expect(response).to have_http_status(200)
+      end
+
+      it 'sort by TD on players name Michelle' do
+        get "/players?name=michelle&sort_by=yds&sort_by_dir=desc"
+
+        json = JSON.parse(response.body)
+
+        expect(
+          json['data'].first['attributes']['player']
+        ).to eq(@test_player['player'])
+
+        expect(response).to have_http_status(200)
+      end
+    end
   end
 end
