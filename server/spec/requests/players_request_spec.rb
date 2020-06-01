@@ -12,7 +12,7 @@ RSpec.describe "Players", type: :request do
       json = JSON.parse(response.body)
 
       expect(json).not_to be_empty
-      expect(json.count).to eq(10)
+      expect(json['data'].count).to eq(10)
     end
 
     it 'returns status code 200' do
