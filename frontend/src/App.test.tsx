@@ -35,15 +35,6 @@ const players: Player[] = [
 
 describe('App', () => {
   describe('fetch player data', () => {
-    it('renders loading screen', async () => {
-      render(<App />)
-
-      expect(screen.getByText('Loading', { exact: false })).toBeInTheDocument()
-      expect(screen.getByRole('main')).toMatchSnapshot()
-
-      await waitFor(() => {})
-    })
-
     it('renders players component', async () => {
       mockedAxios.get.mockResolvedValueOnce({ data: { data: players } })
 
@@ -53,19 +44,6 @@ describe('App', () => {
 
       expect(screen.getByRole('heading')).toHaveTextContent('Player')
       expect(screen.getByRole('main')).toMatchSnapshot()
-    })
-
-    describe('on error from the server', () => {
-      it('should render an error message', async () => {
-        mockedAxios.get.mockRejectedValue(new Error('fake error message'))
-
-        render(<App />)
-
-        await waitFor(() => screen.getByText('error', { exact: false }))
-
-        expect(screen.getByText('error', { exact: false })).toBeInTheDocument()
-        expect(screen.getByRole('main')).toMatchSnapshot()
-      })
     })
   })
 })
