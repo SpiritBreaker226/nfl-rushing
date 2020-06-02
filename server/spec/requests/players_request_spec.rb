@@ -82,5 +82,65 @@ RSpec.describe "Players", type: :request do
         expect(response).to have_http_status(200)
       end
     end
+
+    context 'render CSV format' do
+      context 'renders status 200' do
+        before(:each) do
+          create_list(:player, 10)
+        end
+
+        it 'export players' do
+          get '/players.csv'
+
+          expect(response.header['Content-Type']).to include 'text/csv'
+          # 10 for the data and 1 for the header
+          expect(response.body.split("\n").count).to eq(11)
+          expect(response).to have_http_status(200)
+        end
+
+        context 'for search and sorting' do
+          it 'export players when filteingplayers name Jeese' do
+            create(:player, player: "Jeese #{Faker::Name.last_name}")
+
+            get "/players.csv?name=Jeese"
+
+            res_body = response.body.split("\n")
+
+            expect(response.header['Content-Type']).to include 'text/csv'
+            expect(res_body.count).to eq(2)
+            expect(res_body.last.include? 'Jeese').to be_truthy
+            expect(response).to have_http_status(200)
+          end
+
+          it 'export players when sort by td players' do
+            create(
+              :player, player:
+              "Jeese #{Faker::Name.last_name}",
+              td: 20,
+            )
+
+            get "/players.csv?sort_by=td&sort_by_dir=desc"
+
+            res_body = response.body.split("\n")
+
+            expect(response.header['Content-Type']).to include 'text/csv'
+            expect(res_body.count).to eq(12)
+            expect(res_body.second.include? 'Jeese').to be_truthy
+            expect(response).to have_http_status(200)
+          end
+        end
+      end
+
+      context 'when data is not found' do
+        it 'returns status code 200 and empty csv file' do
+          get "/players.csv"
+
+          expect(response.header['Content-Type']).to include 'text/csv'
+          # header only
+          expect(response.body.split("\n").count).to eq(1)
+          expect(response).to have_http_status(200)
+        end
+      end
+    end
   end
 end
