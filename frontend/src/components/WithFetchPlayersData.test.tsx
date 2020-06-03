@@ -39,7 +39,7 @@ const players: Player[] = [
 
 const MockChildComponent = () => (
   <PlayersDataContext.Consumer>
-    {(players) => (
+    {({ players }) => (
       <div role="testing">
         <PlayersTable players={players} />
       </div>

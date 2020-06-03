@@ -17,7 +17,7 @@ function App() {
 
       <WithFetchPlayersData>
         <PlayersDataContext.Consumer>
-          {(players) => (
+          {({ players }) => (
             <section className="players">
               <PlayersTable players={players} />
             </section>
