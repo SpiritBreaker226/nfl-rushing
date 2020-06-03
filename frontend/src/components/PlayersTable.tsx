@@ -50,6 +50,7 @@ const PlayersTable = (props: PlayersTableProps) => {
             <tr key={`${stats.player}${stats.team}${stats.pos}${playerIndex}`}>
               {Object.values(stats).map((value, index) => (
                 <td
+                  data-testid={`${value}${stats.team}`}
                   key={`${stats.player}${stats.team}${stats.pos}${value}${index}`}
                 >
                   {value}

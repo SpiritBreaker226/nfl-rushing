@@ -74,49 +74,79 @@ exports[`WithFetchPlayersData fetch player data renders players component 1`] = 
     </thead>
     <tbody>
       <tr>
-        <td>
+        <td
+          data-testid="3GB"
+        >
           3
         </td>
-        <td>
+        <td
+          data-testid="0.8GB"
+        >
           0.8
         </td>
-        <td>
+        <td
+          data-testid="-0.7GB"
+        >
           -0.7
         </td>
-        <td>
+        <td
+          data-testid="0GB"
+        >
           0
         </td>
-        <td>
+        <td
+          data-testid="0.0GB"
+        >
           0.0
         </td>
-        <td>
+        <td
+          data-testid="0GB"
+        >
           0
         </td>
-        <td>
+        <td
+          data-testid="1GB"
+        >
           1
         </td>
-        <td>
+        <td
+          data-testid="0GB"
+        >
           0
         </td>
-        <td>
+        <td
+          data-testid="Brett HundleyGB"
+        >
           Brett Hundley
         </td>
-        <td>
+        <td
+          data-testid="QBGB"
+        >
           QB
         </td>
-        <td>
+        <td
+          data-testid="0GB"
+        >
           0
         </td>
-        <td>
+        <td
+          data-testid="GBGB"
+        >
           GB
         </td>
-        <td>
+        <td
+          data-testid="0GB"
+        >
           0
         </td>
-        <td>
+        <td
+          data-testid="-2GB"
+        >
           -2
         </td>
-        <td>
+        <td
+          data-testid="-0.5GB"
+        >
           -0.5
         </td>
       </tr>
