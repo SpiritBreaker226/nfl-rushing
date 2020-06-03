@@ -12,6 +12,20 @@ exports[`App fetch player data renders players component 1`] = `
     </h1>
   </header>
   <section
+    class="search"
+  >
+    <input
+      id="searchValue"
+      name="searchValue"
+      placeholder="Search by Name"
+      type="text"
+      value=""
+    />
+    <button>
+      Search
+    </button>
+  </section>
+  <section
     class="players"
   >
     <table
@@ -68,7 +82,86 @@ exports[`App fetch player data renders players component 1`] = `
       </thead>
       <tbody>
         <tr>
-          <td>
+          <td
+            data-testid="205NO"
+          >
+            205
+          </td>
+          <td
+            data-testid="12.8NO"
+          >
+            12.8
+          </td>
+          <td
+            data-testid="5.1NO"
+          >
+            5.1
+          </td>
+          <td
+            data-testid="49NO"
+          >
+            49
+          </td>
+          <td
+            data-testid="23.9NO"
+          >
+            23.9
+          </td>
+          <td
+            data-testid="2NO"
+          >
+            2
+          </td>
+          <td
+            data-testid="2NO"
+          >
+            2
+          </td>
+          <td
+            data-testid="75NO"
+          >
+            75
+          </td>
+          <td
+            data-testid="Mark IngramNO"
+          >
+            Mark Ingram
+          </td>
+          <td
+            data-testid="RBNO"
+          >
+            RB
+          </td>
+          <td
+            data-testid="6NO"
+          >
+            6
+          </td>
+          <td
+            data-testid="NONO"
+          >
+            NO
+          </td>
+          <td
+            data-testid="4NO"
+          >
+            4
+          </td>
+          <td
+            data-testid="1NO"
+          >
+            1
+          </td>
+          <td
+            data-testid="65.2NO"
+          >
+            65.2
+          </td>
+        </tr>
+        <tr>
+          <td
+            data-testid="3GB"
+          >
             3
           </td>
           <td

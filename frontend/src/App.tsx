@@ -5,6 +5,7 @@ import WithFetchPlayersData, {
 } from './components/WithFetchPlayersData'
 
 import PlayersTable from './components/PlayersTable'
+import PlayersSearch from './components/PlayersSearch'
 
 import './App.css'
 
@@ -16,6 +17,7 @@ function App() {
       </header>
 
       <WithFetchPlayersData>
+        <PlayersSearch />
         <PlayersDataContext.Consumer>
           {({ players }) => (
             <section className="players">
