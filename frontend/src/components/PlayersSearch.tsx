@@ -6,7 +6,7 @@ import { Types } from '../types/Actions'
 
 import { AppContext } from '../contexts/AppContext'
 
-function PlayersSearch() {
+const PlayersSearch = () => {
   const { state, dispatch } = useContext(AppContext)
   const handleChangeSearchValue = (e: ChangeEvent<HTMLInputElement>) =>
     dispatch({
