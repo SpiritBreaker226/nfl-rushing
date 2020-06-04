@@ -1,6 +1,6 @@
 import React from 'react'
 
-import WithFetchPlayersData from './components/WithFetchPlayersData'
+import FetchData from './components/FetchData'
 
 import PlayersTable from './components/PlayersTable'
 import PlayersSearch from './components/PlayersSearch'
@@ -17,7 +17,7 @@ function App() {
       </header>
 
       <AppProvider>
-        <WithFetchPlayersData />
+        <FetchData />
         <PlayersSearch />
         <PlayersTable />
       </AppProvider>

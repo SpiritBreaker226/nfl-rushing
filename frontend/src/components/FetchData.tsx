@@ -6,7 +6,7 @@ import { AppContext } from '../contexts/AppContext'
 
 import { Types } from '../types/Actions'
 
-const WithFetchPlayersData: FunctionComponent = () => {
+const FetchData: FunctionComponent = () => {
   const { state, dispatch } = useContext(AppContext)
 
   useEffect(() => {
@@ -48,4 +48,4 @@ const WithFetchPlayersData: FunctionComponent = () => {
   return null
 }
 
-export default WithFetchPlayersData
+export default FetchData

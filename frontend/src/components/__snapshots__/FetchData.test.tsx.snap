@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FetchData fetch player data on error from the server should render an error message 1`] = `
+<section
+  class="error"
+>
+  fake error message
+</section>
+`;
+
+exports[`FetchData fetch player data renders loading screen 1`] = `
+<div
+  class="loading"
+>
+  Loading...
+</div>
+`;

@@ -6,7 +6,7 @@ import axios from 'axios'
 
 import { AppContext } from '../contexts/AppContext'
 
-import WithFetchPlayersData from './WithFetchPlayersData'
+import FetchData from './FetchData'
 
 jest.mock('axios')
 const mockedAxios = axios as jest.Mocked<typeof axios>
@@ -25,11 +25,11 @@ const makeWrapper = (state: { isLoading?: boolean; errorMessage?: string }) => (
       dispatch: () => null,
     }}
   >
-    <WithFetchPlayersData />
+    <FetchData />
   </AppContext.Provider>
 )
 
-describe('WithFetchPlayersData', () => {
+describe('FetchData', () => {
   describe('fetch player data', () => {
     it('renders loading screen', async () => {
       render(makeWrapper({ isLoading: true }))
