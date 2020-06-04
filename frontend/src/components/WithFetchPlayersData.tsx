@@ -1,9 +1,4 @@
-import React, {
-  FunctionComponent,
-  createContext,
-  useContext,
-  useEffect,
-} from 'react'
+import React, { FunctionComponent, useContext, useEffect } from 'react'
 
 import axios from 'axios'
 
@@ -11,13 +6,7 @@ import { AppContext } from '../contexts/AppContext'
 
 import { Types } from '../types/Actions'
 
-export interface WithFetchDataProps {}
-
-export const PlayersDataContext = createContext(null)
-
-const WithFetchPlayersData: FunctionComponent<WithFetchDataProps> = ({
-  children,
-}) => {
+const WithFetchPlayersData: FunctionComponent = () => {
   const { state, dispatch } = useContext(AppContext)
 
   useEffect(() => {
@@ -56,11 +45,7 @@ const WithFetchPlayersData: FunctionComponent<WithFetchDataProps> = ({
     return <section className="error">{state.errorMessage}</section>
   }
 
-  return (
-    <PlayersDataContext.Provider value={null}>
-      {children}
-    </PlayersDataContext.Provider>
-  )
+  return null
 }
 
 export default WithFetchPlayersData

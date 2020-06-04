@@ -17,10 +17,9 @@ function App() {
       </header>
 
       <AppProvider>
-        <WithFetchPlayersData>
-          <PlayersSearch />
-          <PlayersTable />
-        </WithFetchPlayersData>
+        <WithFetchPlayersData />
+        <PlayersSearch />
+        <PlayersTable />
       </AppProvider>
     </main>
   )
