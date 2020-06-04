@@ -26,6 +26,16 @@ exports[`App fetch player data renders players component 1`] = `
     </button>
   </section>
   <section
+    class="download"
+  >
+    <a
+      data-testid="download_csv"
+      href="http://localhost:3000/players.csv"
+    >
+      Download CSV
+    </a>
+  </section>
+  <section
     class="players"
   >
     <table

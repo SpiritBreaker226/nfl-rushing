@@ -4,6 +4,7 @@ import FetchData from './components/FetchData'
 
 import PlayersTable from './components/PlayersTable'
 import PlayersSearch from './components/PlayersSearch'
+import PlayersDownload from './components/PlayersDownload'
 
 import { AppProvider } from './contexts/AppContext'
 
@@ -19,6 +20,7 @@ function App() {
       <AppProvider>
         <FetchData />
         <PlayersSearch />
+        <PlayersDownload />
         <PlayersTable />
       </AppProvider>
     </main>

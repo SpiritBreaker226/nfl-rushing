@@ -81,5 +81,39 @@ describe('App', () => {
         expect(screen.getAllByRole('row').length).toEqual(4)
       })
     })
+
+    describe('when download csv', () => {
+      describe('url for the server should match what table looks like', () => {
+        it('download a csv all of the players', async () => {
+          expect(
+            screen.getByText('Download', { exact: false }).getAttribute('href')
+          ).toEqual(`${process.env.REACT_APP_BASE_API_URL}/players.csv`)
+        })
+
+        it('download a csv a player name mark', async () => {
+          fireEvent.change(screen.getByRole('textbox'), {
+            target: { value: 'mark' },
+          })
+
+          mockedAxios.get.mockResolvedValueOnce({
+            data: { data: [players[2]] },
+          })
+
+          fireEvent.click(screen.getByText('Search'))
+
+          expect(
+            screen.getByText('Loading', { exact: false })
+          ).toBeInTheDocument()
+
+          await waitFor(() => screen.getByRole('textbox'))
+
+          expect(
+            screen.getByText('Download', { exact: false }).getAttribute('href')
+          ).toEqual(
+            `${process.env.REACT_APP_BASE_API_URL}/players.csv?name=mark`
+          )
+        })
+      })
+    })
   })
 })
