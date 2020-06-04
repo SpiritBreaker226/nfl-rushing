@@ -1,15 +1,18 @@
 import React, {
   FunctionComponent,
   createContext,
-  useState,
   ChangeEvent,
+  useContext,
+  useEffect,
 } from 'react'
 
+import axios from 'axios'
 import queryString from 'query-string'
 
-import { PlayerQuery } from '../types/PlayerQuery'
+import { AppContext } from '../contexts/AppContext'
 
-import useFetchData from '../hooks/useFetchData'
+import { PlayerQuery } from '../types/PlayerQuery'
+import { Types } from '../types/Actions'
 
 export interface WithFetchDataProps {}
 export interface CallbackProps {
@@ -17,9 +20,6 @@ export interface CallbackProps {
 }
 
 export const PlayersDataContext = createContext({
-  players: [],
-  endpointURL: '',
-  searchValue: '',
   handleChangeSearchValue: (e: ChangeEvent<HTMLInputElement>) => {},
   setParamsCallback: (options: CallbackProps) => {},
 })
@@ -27,14 +27,12 @@ export const PlayersDataContext = createContext({
 const WithFetchPlayersData: FunctionComponent<WithFetchDataProps> = ({
   children,
 }) => {
-  const [endpointURL, setEndpointURL] = useState(
-    `${process.env.REACT_APP_BASE_API_URL}/players`
-  )
-  const [searchValue, setSearchValue] = useState('')
+  const { state, dispatch } = useContext(AppContext)
+
   const handleChangeSearchValue = (e: ChangeEvent<HTMLInputElement>) =>
-    setSearchValue(e.target.value)
+    dispatch({ type: Types.UpdateSearch, payload: { search: e.target.value } })
   const setParamsCallback = ({ params }: CallbackProps) => {
-    const currentURL = queryString.parseUrl(endpointURL)
+    const currentURL = queryString.parseUrl(state.urlToPlayersEndpoint)
     const query = { ...currentURL.query, ...params }
     const url = queryString.stringifyUrl(
       {
@@ -47,22 +45,49 @@ const WithFetchPlayersData: FunctionComponent<WithFetchDataProps> = ({
       }
     )
 
-    setEndpointURL(url)
+    dispatch({ type: Types.UpdateURL, payload: { url } })
   }
-  const { isLoading, errorMessage, data: players } = useFetchData({
-    url: endpointURL,
-  })
 
-  if (isLoading) return <div className="loading">Loading...</div>
-  if (errorMessage) return <section className="error">{errorMessage}</section>
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        dispatch({
+          type: Types.UpdateLoading,
+          payload: { isLoading: true },
+        })
+
+        const res = await axios.get(state.urlToPlayersEndpoint)
+
+        dispatch({
+          type: Types.UpdatePlayers,
+          payload: {
+            players: res.data.data,
+            isLoading: false,
+          },
+        })
+      } catch (error) {
+        dispatch({
+          type: Types.UpdateErrorMessageFromServer,
+          payload: {
+            isLoading: false,
+            errorMessage: error.message,
+          },
+        })
+      }
+    }
+
+    fetchData()
+  }, [dispatch, state.urlToPlayersEndpoint])
+
+  if (state.isLoading) return <div className="loading">Loading...</div>
+  if (state.errorMessage) {
+    return <section className="error">{state.errorMessage}</section>
+  }
 
   return (
     <PlayersDataContext.Provider
       value={{
-        players,
-        endpointURL,
         setParamsCallback,
-        searchValue,
         handleChangeSearchValue,
       }}
     >

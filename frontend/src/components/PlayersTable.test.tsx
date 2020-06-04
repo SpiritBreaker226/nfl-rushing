@@ -3,6 +3,8 @@ import { render } from '@testing-library/react'
 
 import { Player } from '../types/Players'
 
+import { AppContext } from '../contexts/AppContext'
+
 import PlayersTable from './PlayersTable'
 
 const players: Player[] = [
@@ -65,9 +67,26 @@ const players: Player[] = [
   },
 ]
 
+const makeWrapper = (state: { players: Player[] }) => (
+  <AppContext.Provider
+    value={{
+      state: {
+        urlToPlayersEndpoint: '',
+        search: '',
+        errorMessage: '',
+        isLoading: false,
+        ...state,
+      },
+      dispatch: () => null,
+    }}
+  >
+    <PlayersTable />
+  </AppContext.Provider>
+)
+
 describe('The list of players', () => {
   it('should render as expeected', () => {
-    const { getAllByRole } = render(<PlayersTable players={players} />)
+    const { getAllByRole } = render(makeWrapper({ players }))
 
     expect(getAllByRole('columnheader').length).toEqual(15)
     expect(getAllByRole('row').length).toEqual(4)
@@ -75,7 +94,7 @@ describe('The list of players', () => {
 
   describe('when no players are found', () => {
     it('should render no player message', () => {
-      const { getByText } = render(<PlayersTable players={[]} />)
+      const { getByText } = render(makeWrapper({ players: [] }))
 
       expect(
         getByText('No Players Found', { exact: false })

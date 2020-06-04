@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
 import { Player, Stats } from '../types/Players'
+
+import { AppContext } from '../contexts/AppContext'
 
 const headers = [
   "Player's Name",
@@ -19,12 +22,10 @@ const headers = [
   'Rushing Fumbles',
 ]
 
-export interface PlayersTableProps {
-  players: Player[]
-}
+const PlayersTable = () => {
+  const { state } = useContext(AppContext)
 
-const PlayersTable = (props: PlayersTableProps) => {
-  if (props.players.length === 0) {
+  if (state.players.length === 0) {
     return (
       <section className="no-plyaers-found">
         <span>No Players Found</span>
@@ -33,34 +34,38 @@ const PlayersTable = (props: PlayersTableProps) => {
   }
 
   return (
-    <table className="players-table">
-      <thead>
-        <tr>
-          {headers.map((header) => (
-            <th key={header}>{header}</th>
-          ))}
-        </tr>
-      </thead>
+    <section className="players">
+      <table className="players-table">
+        <thead>
+          <tr>
+            {headers.map((header) => (
+              <th key={header}>{header}</th>
+            ))}
+          </tr>
+        </thead>
 
-      <tbody>
-        {props.players.map((player: Player, playerIndex) => {
-          const stats: Stats = player.attributes
+        <tbody>
+          {state.players.map((player: Player, playerIndex) => {
+            const stats: Stats = player.attributes
 
-          return (
-            <tr key={`${stats.player}${stats.team}${stats.pos}${playerIndex}`}>
-              {Object.values(stats).map((value, index) => (
-                <td
-                  data-testid={`${value}${stats.team}`}
-                  key={`${stats.player}${stats.team}${stats.pos}${value}${index}`}
-                >
-                  {value}
-                </td>
-              ))}
-            </tr>
-          )
-        })}
-      </tbody>
-    </table>
+            return (
+              <tr
+                key={`${stats.player}${stats.team}${stats.pos}${playerIndex}`}
+              >
+                {Object.values(stats).map((value, index) => (
+                  <td
+                    data-testid={`${value}${stats.team}`}
+                    key={`${stats.player}${stats.team}${stats.pos}${value}${index}`}
+                  >
+                    {value}
+                  </td>
+                ))}
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+    </section>
   )
 }
 
