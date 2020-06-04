@@ -6,43 +6,19 @@ import React, {
 } from 'react'
 
 import axios from 'axios'
-import queryString from 'query-string'
 
 import { AppContext } from '../contexts/AppContext'
 
-import { PlayerQuery } from '../types/PlayerQuery'
 import { Types } from '../types/Actions'
 
 export interface WithFetchDataProps {}
-export interface CallbackProps {
-  params: PlayerQuery
-}
 
-export const PlayersDataContext = createContext({
-  setParamsCallback: (options: CallbackProps) => {},
-})
+export const PlayersDataContext = createContext(null)
 
 const WithFetchPlayersData: FunctionComponent<WithFetchDataProps> = ({
   children,
 }) => {
   const { state, dispatch } = useContext(AppContext)
-
-  const setParamsCallback = ({ params }: CallbackProps) => {
-    const currentURL = queryString.parseUrl(state.urlToPlayersEndpoint)
-    const query = { ...currentURL.query, ...params }
-    const url = queryString.stringifyUrl(
-      {
-        url: currentURL.url,
-        query,
-      },
-      {
-        skipEmptyString: true,
-        skipNull: true,
-      }
-    )
-
-    dispatch({ type: Types.UpdateURL, payload: { url } })
-  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,7 +57,7 @@ const WithFetchPlayersData: FunctionComponent<WithFetchDataProps> = ({
   }
 
   return (
-    <PlayersDataContext.Provider value={{ setParamsCallback }}>
+    <PlayersDataContext.Provider value={null}>
       {children}
     </PlayersDataContext.Provider>
   )

@@ -1,10 +1,10 @@
 import React, { useContext, ChangeEvent } from 'react'
 
-import { PlayersDataContext } from './WithFetchPlayersData'
-
 import { Types } from '../types/Actions'
 
 import { AppContext } from '../contexts/AppContext'
+
+import { setParamsCallback } from './helpers/helpers'
 
 const PlayersSearch = () => {
   const { state, dispatch } = useContext(AppContext)
@@ -15,29 +15,27 @@ const PlayersSearch = () => {
     })
 
   return (
-    <PlayersDataContext.Consumer>
-      {({ setParamsCallback }) => {
-        return (
-          <section className="search">
-            <input
-              type="text"
-              name="searchValue"
-              id="searchValue"
-              value={state.search}
-              placeholder="Search by Name"
-              onChange={handleChangeSearchValue}
-            />
-            <button
-              onClick={() => {
-                setParamsCallback({ params: { name: state.search } })
-              }}
-            >
-              Search
-            </button>
-          </section>
-        )
-      }}
-    </PlayersDataContext.Consumer>
+    <section className="search">
+      <input
+        type="text"
+        name="searchValue"
+        id="searchValue"
+        value={state.search}
+        placeholder="Search by Name"
+        onChange={handleChangeSearchValue}
+      />
+      <button
+        onClick={() => {
+          setParamsCallback({
+            params: { name: state.search },
+            url: state.urlToPlayersEndpoint,
+            dispatch,
+          })
+        }}
+      >
+        Search
+      </button>
+    </section>
   )
 }
 
