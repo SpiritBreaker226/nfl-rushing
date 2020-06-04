@@ -1,15 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useContext, ChangeEvent } from 'react'
 
 import { PlayersDataContext } from './WithFetchPlayersData'
+
+import { Types } from '../types/Actions'
 
 import { AppContext } from '../contexts/AppContext'
 
 function PlayersSearch() {
-  const { state } = useContext(AppContext)
+  const { state, dispatch } = useContext(AppContext)
+  const handleChangeSearchValue = (e: ChangeEvent<HTMLInputElement>) =>
+    dispatch({
+      type: Types.UpdateSearch,
+      payload: { search: e.target.value },
+    })
 
   return (
     <PlayersDataContext.Consumer>
-      {({ setParamsCallback, handleChangeSearchValue }) => {
+      {({ setParamsCallback }) => {
         return (
           <section className="search">
             <input

@@ -1,7 +1,6 @@
 import React, {
   FunctionComponent,
   createContext,
-  ChangeEvent,
   useContext,
   useEffect,
 } from 'react'
@@ -20,7 +19,6 @@ export interface CallbackProps {
 }
 
 export const PlayersDataContext = createContext({
-  handleChangeSearchValue: (e: ChangeEvent<HTMLInputElement>) => {},
   setParamsCallback: (options: CallbackProps) => {},
 })
 
@@ -29,8 +27,6 @@ const WithFetchPlayersData: FunctionComponent<WithFetchDataProps> = ({
 }) => {
   const { state, dispatch } = useContext(AppContext)
 
-  const handleChangeSearchValue = (e: ChangeEvent<HTMLInputElement>) =>
-    dispatch({ type: Types.UpdateSearch, payload: { search: e.target.value } })
   const setParamsCallback = ({ params }: CallbackProps) => {
     const currentURL = queryString.parseUrl(state.urlToPlayersEndpoint)
     const query = { ...currentURL.query, ...params }
@@ -85,12 +81,7 @@ const WithFetchPlayersData: FunctionComponent<WithFetchDataProps> = ({
   }
 
   return (
-    <PlayersDataContext.Provider
-      value={{
-        setParamsCallback,
-        handleChangeSearchValue,
-      }}
-    >
+    <PlayersDataContext.Provider value={{ setParamsCallback }}>
       {children}
     </PlayersDataContext.Provider>
   )
