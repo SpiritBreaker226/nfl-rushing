@@ -83,6 +83,83 @@ exports[`App fetch player data renders players component 1`] = `
       <tbody>
         <tr>
           <td
+            data-testid="2JAX"
+          >
+            2
+          </td>
+          <td
+            data-testid="2.0JAX"
+          >
+            2.0
+          </td>
+          <td
+            data-testid="3.5JAX"
+          >
+            3.5
+          </td>
+          <td
+            data-testid="0JAX"
+          >
+            0
+          </td>
+          <td
+            data-testid="0.0JAX"
+          >
+            0.0
+          </td>
+          <td
+            data-testid="0JAX"
+          >
+            0
+          </td>
+          <td
+            data-testid="0JAX"
+          >
+            0
+          </td>
+          <td
+            data-testid="7JAX"
+          >
+            7
+          </td>
+          <td
+            data-testid="Joe BanyardJAX"
+          >
+            Joe Banyard
+          </td>
+          <td
+            data-testid="RBJAX"
+          >
+            RB
+          </td>
+          <td
+            data-testid="0JAX"
+          >
+            0
+          </td>
+          <td
+            data-testid="JAXJAX"
+          >
+            JAX
+          </td>
+          <td
+            data-testid="0JAX"
+          >
+            0
+          </td>
+          <td
+            data-testid="7JAX"
+          >
+            7
+          </td>
+          <td
+            data-testid="7.0JAX"
+          >
+            7.0
+          </td>
+        </tr>
+        <tr>
+          <td
             data-testid="205NO"
           >
             205

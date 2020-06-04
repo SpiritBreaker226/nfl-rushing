@@ -4,35 +4,21 @@ import { waitFor, screen, render } from '@testing-library/react'
 
 import axios from 'axios'
 
-import { AppContext } from '../contexts/AppContext'
+import { MakeWrapper } from './helpers/jest_helpers'
 
 import FetchData from './FetchData'
 
 jest.mock('axios')
 const mockedAxios = axios as jest.Mocked<typeof axios>
 
-const makeWrapper = (state: { isLoading?: boolean; errorMessage?: string }) => (
-  <AppContext.Provider
-    value={{
-      state: {
-        players: [],
-        urlToPlayersEndpoint: '',
-        search: '',
-        errorMessage: '',
-        isLoading: false,
-        ...state,
-      },
-      dispatch: () => null,
-    }}
-  >
-    <FetchData />
-  </AppContext.Provider>
-)
-
 describe('FetchData', () => {
   describe('fetch player data', () => {
     it('renders loading screen', async () => {
-      render(makeWrapper({ isLoading: true }))
+      render(
+        <MakeWrapper state={{ isLoading: true }}>
+          <FetchData />
+        </MakeWrapper>
+      )
 
       expect(screen.getByText('Loading', { exact: false })).toBeInTheDocument()
       expect(screen.getByText('Loading', { exact: false })).toMatchSnapshot()
@@ -45,9 +31,13 @@ describe('FetchData', () => {
         mockedAxios.get.mockRejectedValue(new Error('fake error message'))
 
         render(
-          makeWrapper({
-            errorMessage: 'fake error message',
-          })
+          <MakeWrapper
+            state={{
+              errorMessage: 'fake error message',
+            }}
+          >
+            <FetchData />
+          </MakeWrapper>
         )
 
         await waitFor(() => screen.getByText('error', { exact: false }))
