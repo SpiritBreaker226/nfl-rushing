@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 
 import { Player } from '../../types/Players'
+import { Direction } from '../../types/PlayerQuery'
 
 import { AppContext } from '../../contexts/AppContext'
 
@@ -70,6 +71,10 @@ export interface TestingState {
   search?: string
   errorMessage?: string
   isLoading?: boolean
+  sorting?: {
+    fieldName: string | undefined
+    dir: Direction
+  }
 }
 
 export interface MakeWrapperProps {
@@ -87,6 +92,10 @@ export const MakeWrapper: FunctionComponent<MakeWrapperProps> = ({
         urlToPlayersEndpoint: '',
         search: '',
         errorMessage: '',
+        sorting: {
+          fieldName: undefined,
+          dir: undefined,
+        },
         isLoading: false,
         ...state,
       },

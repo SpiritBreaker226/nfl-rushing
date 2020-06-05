@@ -37,6 +37,11 @@ export const searchReducer = (state: InitialState, action: Action) => {
         ...state,
         search: action.payload.search,
       }
+    case Types.UpdateSorting:
+      return {
+        ...state,
+        sorting: action.payload.sorting,
+      }
     default:
       return state
   }

@@ -45,48 +45,75 @@ exports[`App fetch player data renders players component 1`] = `
         <tr>
           <th>
             Player's Name
+            
           </th>
           <th>
             Player's team abbreviation
+            
           </th>
           <th>
             Player's postion
+            
           </th>
           <th>
             Rushing Attempts
+            
           </th>
           <th>
             Rushing Attempts Per Game Avg
+            
           </th>
           <th>
             Total Rushing Yards
+            <button
+              data-testid="yds"
+            >
+              Up Down
+            </button>
           </th>
           <th>
             Rushing Avg Yards Per Attempt
+            
           </th>
           <th>
             Rushing Yards Per Game
+            
           </th>
           <th>
             Total Rushing Touchdowns
+            <button
+              data-testid="td"
+            >
+              Up Down
+            </button>
           </th>
           <th>
             Longest Rush
+            <button
+              data-testid="sortByLng"
+            >
+              Up Down
+            </button>
           </th>
           <th>
             Rushing First Downs
+            
           </th>
           <th>
             Rushing First Down %
+            
           </th>
           <th>
             Rushing 20+ Yards Each
+            
           </th>
           <th>
             Rushing 40+ Yards Each
+            
           </th>
           <th>
             Rushing Fumbles
+            
           </th>
         </tr>
       </thead>
@@ -205,9 +232,9 @@ exports[`App fetch player data renders players component 1`] = `
             2
           </td>
           <td
-            data-testid="75NO"
+            data-testid="75TNO"
           >
-            75
+            75T
           </td>
           <td
             data-testid="Mark IngramNO"

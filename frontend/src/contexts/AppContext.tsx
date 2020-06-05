@@ -17,6 +17,10 @@ const initialState: InitialState = {
   players: [],
   urlToPlayersEndpoint: `${process.env.REACT_APP_BASE_API_URL}/players`,
   search: '',
+  sorting: {
+    fieldName: undefined,
+    dir: undefined,
+  },
   errorMessage: '',
   isLoading: true,
 }

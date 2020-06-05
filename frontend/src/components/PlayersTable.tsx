@@ -1,29 +1,33 @@
 import React, { useContext } from 'react'
 
 import { Player, Stats } from '../types/Players'
+import { Types } from '../types/Actions'
+import { Direction } from '../types/PlayerQuery'
 
 import { AppContext } from '../contexts/AppContext'
 
+import { setParamsCallback } from './helpers/helpers'
+
 const headers = [
-  "Player's Name",
-  "Player's team abbreviation",
-  "Player's postion",
-  'Rushing Attempts',
-  'Rushing Attempts Per Game Avg',
-  'Total Rushing Yards',
-  'Rushing Avg Yards Per Attempt',
-  'Rushing Yards Per Game',
-  'Total Rushing Touchdowns',
-  'Longest Rush',
-  'Rushing First Downs',
-  'Rushing First Down %',
-  'Rushing 20+ Yards Each',
-  'Rushing 40+ Yards Each',
-  'Rushing Fumbles',
+  { name: "Player's Name", sortByField: '' },
+  { name: "Player's team abbreviation", sortByField: '' },
+  { name: "Player's postion", sortByField: '' },
+  { name: 'Rushing Attempts', sortByField: '' },
+  { name: 'Rushing Attempts Per Game Avg', sortByField: '' },
+  { name: 'Total Rushing Yards', sortByField: 'yds' },
+  { name: 'Rushing Avg Yards Per Attempt', sortByField: '' },
+  { name: 'Rushing Yards Per Game', sortByField: '' },
+  { name: 'Total Rushing Touchdowns', sortByField: 'td' },
+  { name: 'Longest Rush', sortByField: 'sortByLng' },
+  { name: 'Rushing First Downs', sortByField: '' },
+  { name: 'Rushing First Down %', sortByField: '' },
+  { name: 'Rushing 20+ Yards Each', sortByField: '' },
+  { name: 'Rushing 40+ Yards Each', sortByField: '' },
+  { name: 'Rushing Fumbles', sortByField: '' },
 ]
 
 const PlayersTable = () => {
-  const { state } = useContext(AppContext)
+  const { state, dispatch } = useContext(AppContext)
 
   if (state.isLoading) return null
 
@@ -35,13 +39,62 @@ const PlayersTable = () => {
     )
   }
 
+  const SortingArrow = ({ sortByField }: { sortByField: string }) => {
+    if (!state.sorting.fieldName || sortByField !== state.sorting.fieldName) {
+      return <React.Fragment>Up Down</React.Fragment>
+    } else if (state.sorting.dir && state.sorting.dir === 'desc') {
+      return <React.Fragment>Down</React.Fragment>
+    }
+
+    return <React.Fragment>Up</React.Fragment>
+  }
+
   return (
     <section className="players">
       <table className="players-table">
         <thead>
           <tr>
-            {headers.map((header) => (
-              <th key={header}>{header}</th>
+            {headers.map(({ name, sortByField }) => (
+              <th key={name}>
+                {name}
+
+                {sortByField && (
+                  <button
+                    data-testid={sortByField}
+                    onClick={() => {
+                      let dir: Direction =
+                        state.sorting.dir && state.sorting.dir === 'asc'
+                          ? 'desc'
+                          : 'asc'
+
+                      // reset direction on field change
+                      if (
+                        !state.sorting.fieldName ||
+                        sortByField !== state.sorting.fieldName
+                      )
+                        dir = 'asc'
+
+                      dispatch({
+                        type: Types.UpdateSorting,
+                        payload: {
+                          sorting: {
+                            fieldName: sortByField,
+                            dir,
+                          },
+                        },
+                      })
+
+                      setParamsCallback({
+                        params: { sort_by: sortByField, sort_by_dir: dir },
+                        url: state.urlToPlayersEndpoint,
+                        dispatch,
+                      })
+                    }}
+                  >
+                    <SortingArrow sortByField={sortByField} />
+                  </button>
+                )}
+              </th>
             ))}
           </tr>
         </thead>

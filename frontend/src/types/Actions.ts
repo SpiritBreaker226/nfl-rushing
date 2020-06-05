@@ -1,4 +1,5 @@
 import { Player } from './Players'
+import { Sorting } from './PlayerQuery'
 
 export interface InitialState {
   players: Player[]
@@ -6,12 +7,14 @@ export interface InitialState {
   search: string
   errorMessage: string
   isLoading: boolean
+  sorting: Sorting
 }
 
 export enum Types {
   UpdatePlayers = 'UPDATE_PLAYERS',
   UpdateURL = 'UPDATE_URL',
   UpdateSearch = 'UPDATE_SEARCH',
+  UpdateSorting = 'UPDATE_SORTING',
   UpdateLoading = 'UPDATE_LOADING',
   UpdateErrorMessageFromServer = 'UPDATE_ERROR_MESSAGE_FROM_SERVER',
 }
@@ -39,6 +42,9 @@ interface CallingServerPayload {
 interface SearchPayload {
   [Types.UpdateSearch]: {
     search: string
+  }
+  [Types.UpdateSorting]: {
+    sorting: Sorting
   }
 }
 

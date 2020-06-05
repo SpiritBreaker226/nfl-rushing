@@ -111,6 +111,96 @@ describe('App', () => {
             `${process.env.REACT_APP_BASE_API_URL}/players.csv?name=mark`
           )
         })
+
+        it('download a csv on sorted players', async () => {
+          fireEvent.click(screen.getByTestId('yds'))
+
+          await waitFor(() => screen.getByRole('textbox'))
+
+          expect(
+            screen.getByText('Download', { exact: false }).getAttribute('href')
+          ).toEqual(
+            `${process.env.REACT_APP_BASE_API_URL}/players.csv?sort_by=yds&sort_by_dir=asc`
+          )
+        })
+      })
+    })
+
+    describe('when sorting', () => {
+      it('should up and down on fields that can be sorted', async () => {
+        const totalRushingYardsHeader = screen.getAllByRole('columnheader')[5]
+        const totalRushingTouchdownsHeader = screen.getAllByRole(
+          'columnheader'
+        )[8]
+        const longestRushHeader = screen.getAllByRole('columnheader')[9]
+
+        expect(totalRushingYardsHeader).toHaveTextContent(/Up down/i)
+        expect(totalRushingTouchdownsHeader).toHaveTextContent(/Up down/i)
+        expect(longestRushHeader).toHaveTextContent(/Up down/i)
+      })
+
+      it('should have the url to the server contain sort by and direction', async () => {
+        fireEvent.click(screen.getByTestId('yds'))
+
+        expect(
+          screen.queryByText('Loading', { exact: false })
+        ).toBeInTheDocument()
+
+        await waitFor(() => screen.getByRole('textbox'))
+
+        expect(mockedAxios.get).toHaveBeenLastCalledWith(
+          `${process.env.REACT_APP_BASE_API_URL}/players?sort_by=yds&sort_by_dir=asc`
+        )
+
+        fireEvent.click(screen.getByTestId('yds'))
+
+        await waitFor(() => screen.getByRole('textbox'))
+
+        expect(mockedAxios.get).toHaveBeenLastCalledWith(
+          `${process.env.REACT_APP_BASE_API_URL}/players?sort_by=yds&sort_by_dir=desc`
+        )
+
+        expect(screen.getAllByRole('columnheader')[5]).toHaveTextContent(
+          /down/i
+        )
+      })
+
+      it('should reset direction when changing sorted field', async () => {
+        fireEvent.click(screen.getByTestId('yds'))
+
+        await waitFor(() => screen.getByRole('textbox'))
+
+        expect(mockedAxios.get).toHaveBeenLastCalledWith(
+          `${process.env.REACT_APP_BASE_API_URL}/players?sort_by=yds&sort_by_dir=asc`
+        )
+
+        fireEvent.click(screen.getByTestId('td'))
+
+        await waitFor(() => screen.getByRole('textbox'))
+
+        expect(mockedAxios.get).toHaveBeenLastCalledWith(
+          `${process.env.REACT_APP_BASE_API_URL}/players?sort_by=td&sort_by_dir=asc`
+        )
+
+        const totalRushingYardsHeader = screen.getAllByRole('columnheader')[5]
+        let totalRushingTouchdownsHeader = screen.getAllByRole(
+          'columnheader'
+        )[8]
+
+        expect(totalRushingYardsHeader).toHaveTextContent(/Up down/i)
+        expect(totalRushingTouchdownsHeader).toHaveTextContent(/Up/i)
+
+        fireEvent.click(screen.getByTestId('td'))
+
+        await waitFor(() => screen.getByRole('textbox'))
+
+        expect(mockedAxios.get).toHaveBeenLastCalledWith(
+          `${process.env.REACT_APP_BASE_API_URL}/players?sort_by=td&sort_by_dir=desc`
+        )
+
+        totalRushingTouchdownsHeader = screen.getAllByRole('columnheader')[8]
+
+        expect(totalRushingTouchdownsHeader).toHaveTextContent(/Down/i)
       })
     })
   })
