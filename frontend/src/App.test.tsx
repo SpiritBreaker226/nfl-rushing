@@ -65,8 +65,6 @@ describe('App', () => {
       })
 
       it("reset player's table and URL on blank textbox", async () => {
-        mockedAxios.get.mockResolvedValueOnce({ data: { data: [players[1]] } })
-
         fireEvent.click(screen.getByText('Search'))
 
         await waitFor(() => screen.getByRole('heading'))
@@ -114,6 +112,40 @@ describe('App', () => {
           )
         })
       })
+    })
+  })
+
+  describe('when loading the page', () => {
+    it('should not render no player message and display loading text', async () => {
+      mockedAxios.get.mockResolvedValueOnce({ data: { data: [] } })
+
+      render(<App />)
+
+      expect(
+        screen.queryByText('Loading', { exact: false })
+      ).toBeInTheDocument()
+
+      expect(
+        screen.queryByText('Download', { exact: false })
+      ).not.toBeInTheDocument()
+
+      expect(
+        screen.queryByText('No Players Found', { exact: false })
+      ).not.toBeInTheDocument()
+
+      await waitFor(() => screen.getByRole('textbox'))
+
+      expect(
+        screen.queryByText('Loading', { exact: false })
+      ).not.toBeInTheDocument()
+
+      expect(
+        screen.queryByText('Download', { exact: false })
+      ).toBeInTheDocument()
+
+      expect(
+        screen.queryByText('No Players Found', { exact: false })
+      ).toBeInTheDocument()
     })
   })
 })

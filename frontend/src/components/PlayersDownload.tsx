@@ -6,8 +6,10 @@ import { AppContext } from '../contexts/AppContext'
 
 const PlayersDownload = () => {
   const { state } = useContext(AppContext)
-  const currentURL = queryString.parseUrl(state.urlToPlayersEndpoint)
 
+  if (state.isLoading) return null
+
+  const currentURL = queryString.parseUrl(state.urlToPlayersEndpoint)
   const csvLink = queryString.stringifyUrl({
     url: `${currentURL.url}.csv`,
     query: currentURL.query,

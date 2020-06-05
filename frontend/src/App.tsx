@@ -18,10 +18,10 @@ function App() {
       </header>
 
       <AppProvider>
-        <FetchData />
         <PlayersSearch />
         <PlayersDownload />
         <PlayersTable />
+        <FetchData />
       </AppProvider>
     </main>
   )

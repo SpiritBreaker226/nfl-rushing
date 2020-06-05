@@ -25,6 +25,8 @@ const headers = [
 const PlayersTable = () => {
   const { state } = useContext(AppContext)
 
+  if (state.isLoading) return null
+
   if (state.players.length === 0) {
     return (
       <section className="no-plyaers-found">
