@@ -12,7 +12,7 @@ export interface Stats {
   avg: string
   ydsg: string
   td: number
-  lng: number
+  lng: number | string
   first: number
   first_precentage: string
   twenty_plus: number

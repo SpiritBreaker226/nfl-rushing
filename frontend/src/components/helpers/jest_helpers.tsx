@@ -33,7 +33,7 @@ export const players: Player[] = [
       first_precentage: '23.9',
       fourty_plus: 2,
       fum: 2,
-      lng: 75,
+      lng: '75T',
       player: 'Mark Ingram',
       pos: 'RB',
       td: 6,
