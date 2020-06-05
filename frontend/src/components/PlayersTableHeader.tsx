@@ -1,5 +1,12 @@
 import React, { useContext } from 'react'
 
+import {
+  TableHead,
+  TableRow,
+  TableCell,
+  TableSortLabel,
+} from '@material-ui/core'
+
 import { AppContext } from '../contexts/AppContext'
 
 import { Types } from '../types/Actions'
@@ -34,6 +41,12 @@ const PlayersTableHeader = () => {
     // reset direction on field change
     if (sortByField !== state.sorting.fieldName) dir = 'asc'
 
+    setParamsCallback({
+      params: { sort_by: sortByField, sort_by_dir: dir },
+      url: state.urlToPlayersEndpoint,
+      dispatch,
+    })
+
     dispatch({
       type: Types.UpdateSorting,
       payload: {
@@ -43,43 +56,33 @@ const PlayersTableHeader = () => {
         },
       },
     })
-
-    setParamsCallback({
-      params: { sort_by: sortByField, sort_by_dir: dir },
-      url: state.urlToPlayersEndpoint,
-      dispatch,
-    })
-  }
-
-  const SortingArrow = ({ sortByField }: { sortByField: string }) => {
-    if (!state.sorting.fieldName || sortByField !== state.sorting.fieldName) {
-      return <React.Fragment>Up Down</React.Fragment>
-    } else if (state.sorting.dir && state.sorting.dir === 'desc') {
-      return <React.Fragment>Down</React.Fragment>
-    }
-
-    return <React.Fragment>Up</React.Fragment>
   }
 
   return (
-    <thead>
-      <tr>
+    <TableHead>
+      <TableRow>
         {headers.map(({ name, sortByField }) => (
-          <th key={name}>
-            {name}
-
-            {sortByField && (
-              <button
+          <TableCell component="th" key={name}>
+            {sortByField ? (
+              <TableSortLabel
                 data-testid={sortByField}
+                active={sortByField === state.sorting.fieldName}
+                direction={
+                  sortByField === state.sorting.fieldName
+                    ? state.sorting.dir
+                    : 'asc'
+                }
                 onClick={() => handleOnClick(sortByField)}
               >
-                <SortingArrow sortByField={sortByField} />
-              </button>
+                {name}
+              </TableSortLabel>
+            ) : (
+              name
             )}
-          </th>
+          </TableCell>
         ))}
-      </tr>
-    </thead>
+      </TableRow>
+    </TableHead>
   )
 }
 

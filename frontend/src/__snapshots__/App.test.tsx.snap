@@ -1,356 +1,544 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App fetch player data renders players component 1`] = `
-<main
-  class="App"
->
-  <header
-    class="App-header"
-  >
-    <h1>
-      Players
-    </h1>
-  </header>
-  <section
-    class="search"
-  >
-    <input
-      id="searchValue"
-      name="searchValue"
-      placeholder="Search by Name"
-      type="text"
-      value=""
-    />
-    <button>
-      Search
-    </button>
-  </section>
-  <section
-    class="download"
-  >
-    <a
-      data-testid="download_csv"
-      href="http://localhost:3000/players.csv"
+<main>
+  <section>
+    <header
+      class="makeStyles-header-3"
     >
-      Download CSV
-    </a>
-  </section>
-  <section
-    class="players"
-  >
-    <table
-      class="players-table"
+      <div
+        class="MuiGrid-root MuiGrid-container"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+        >
+          <h1
+            class="MuiTypography-root MuiTypography-h1"
+          >
+            Players
+          </h1>
+        </div>
+        <div
+          class="MuiGrid-root makeStyles-headerActions-2 MuiGrid-item MuiGrid-grid-xs-6"
+        >
+          <section>
+            <div
+              class="MuiFormControl-root MuiTextField-root makeStyles-searchText-4"
+            >
+              <div
+                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiInput-input"
+                  id="searchValue"
+                  name="searchValue"
+                  placeholder="Search by Name"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiButton-label"
+              >
+                Search
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </section>
+        </div>
+        <div
+          class="MuiGrid-root makeStyles-headerActions-2 MuiGrid-item MuiGrid-grid-xs-4"
+        >
+          <section
+            class="makeStyles-download-5"
+          >
+            <a
+              class="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-link-6 MuiTypography-colorPrimary"
+              data-testid="download_csv"
+              href="http://localhost:3000/players.csv"
+            >
+              Download CSV
+            </a>
+          </section>
+        </div>
+      </div>
+    </header>
+    <div
+      class="makeStyles-appBody-1"
     >
-      <thead>
-        <tr>
-          <th>
-            Player's Name
-            
-          </th>
-          <th>
-            Player's team abbreviation
-            
-          </th>
-          <th>
-            Player's postion
-            
-          </th>
-          <th>
-            Rushing Attempts
-            
-          </th>
-          <th>
-            Rushing Attempts Per Game Avg
-            
-          </th>
-          <th>
-            Total Rushing Yards
-            <button
-              data-testid="yds"
+      <section>
+        <div
+          class="MuiTableContainer-root"
+        >
+          <table
+            class="MuiTable-root"
+          >
+            <thead
+              class="MuiTableHead-root"
             >
-              Up Down
-            </button>
-          </th>
-          <th>
-            Rushing Avg Yards Per Attempt
-            
-          </th>
-          <th>
-            Rushing Yards Per Game
-            
-          </th>
-          <th>
-            Total Rushing Touchdowns
-            <button
-              data-testid="td"
+              <tr
+                class="MuiTableRow-root MuiTableRow-head"
+              >
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  role="columnheader"
+                  scope="col"
+                >
+                  Player's Name
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  role="columnheader"
+                  scope="col"
+                >
+                  Player's team abbreviation
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  role="columnheader"
+                  scope="col"
+                >
+                  Player's postion
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  role="columnheader"
+                  scope="col"
+                >
+                  Rushing Attempts
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  role="columnheader"
+                  scope="col"
+                >
+                  Rushing Attempts Per Game Avg
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  role="columnheader"
+                  scope="col"
+                >
+                  <span
+                    aria-disabled="false"
+                    class="MuiButtonBase-root MuiTableSortLabel-root"
+                    data-testid="yds"
+                    role="button"
+                    tabindex="0"
+                  >
+                    Total Rushing Yards
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                      />
+                    </svg>
+                  </span>
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  role="columnheader"
+                  scope="col"
+                >
+                  Rushing Avg Yards Per Attempt
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  role="columnheader"
+                  scope="col"
+                >
+                  Rushing Yards Per Game
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  role="columnheader"
+                  scope="col"
+                >
+                  <span
+                    aria-disabled="false"
+                    class="MuiButtonBase-root MuiTableSortLabel-root"
+                    data-testid="td"
+                    role="button"
+                    tabindex="0"
+                  >
+                    Total Rushing Touchdowns
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                      />
+                    </svg>
+                  </span>
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  role="columnheader"
+                  scope="col"
+                >
+                  <span
+                    aria-disabled="false"
+                    class="MuiButtonBase-root MuiTableSortLabel-root"
+                    data-testid="sortByLng"
+                    role="button"
+                    tabindex="0"
+                  >
+                    Longest Rush
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                      />
+                    </svg>
+                  </span>
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  role="columnheader"
+                  scope="col"
+                >
+                  Rushing First Downs
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  role="columnheader"
+                  scope="col"
+                >
+                  Rushing First Down %
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  role="columnheader"
+                  scope="col"
+                >
+                  Rushing 20+ Yards Each
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  role="columnheader"
+                  scope="col"
+                >
+                  Rushing 40+ Yards Each
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head"
+                  role="columnheader"
+                  scope="col"
+                >
+                  Rushing Fumbles
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="MuiTableBody-root"
             >
-              Up Down
-            </button>
-          </th>
-          <th>
-            Longest Rush
-            <button
-              data-testid="sortByLng"
-            >
-              Up Down
-            </button>
-          </th>
-          <th>
-            Rushing First Downs
-            
-          </th>
-          <th>
-            Rushing First Down %
-            
-          </th>
-          <th>
-            Rushing 20+ Yards Each
-            
-          </th>
-          <th>
-            Rushing 40+ Yards Each
-            
-          </th>
-          <th>
-            Rushing Fumbles
-            
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td
-            data-testid="2JAX"
-          >
-            2
-          </td>
-          <td
-            data-testid="2.0JAX"
-          >
-            2.0
-          </td>
-          <td
-            data-testid="3.5JAX"
-          >
-            3.5
-          </td>
-          <td
-            data-testid="0JAX"
-          >
-            0
-          </td>
-          <td
-            data-testid="0.0JAX"
-          >
-            0.0
-          </td>
-          <td
-            data-testid="0JAX"
-          >
-            0
-          </td>
-          <td
-            data-testid="0JAX"
-          >
-            0
-          </td>
-          <td
-            data-testid="7JAX"
-          >
-            7
-          </td>
-          <td
-            data-testid="Joe BanyardJAX"
-          >
-            Joe Banyard
-          </td>
-          <td
-            data-testid="RBJAX"
-          >
-            RB
-          </td>
-          <td
-            data-testid="0JAX"
-          >
-            0
-          </td>
-          <td
-            data-testid="JAXJAX"
-          >
-            JAX
-          </td>
-          <td
-            data-testid="0JAX"
-          >
-            0
-          </td>
-          <td
-            data-testid="7JAX"
-          >
-            7
-          </td>
-          <td
-            data-testid="7.0JAX"
-          >
-            7.0
-          </td>
-        </tr>
-        <tr>
-          <td
-            data-testid="205NO"
-          >
-            205
-          </td>
-          <td
-            data-testid="12.8NO"
-          >
-            12.8
-          </td>
-          <td
-            data-testid="5.1NO"
-          >
-            5.1
-          </td>
-          <td
-            data-testid="49NO"
-          >
-            49
-          </td>
-          <td
-            data-testid="23.9NO"
-          >
-            23.9
-          </td>
-          <td
-            data-testid="2NO"
-          >
-            2
-          </td>
-          <td
-            data-testid="2NO"
-          >
-            2
-          </td>
-          <td
-            data-testid="75TNO"
-          >
-            75T
-          </td>
-          <td
-            data-testid="Mark IngramNO"
-          >
-            Mark Ingram
-          </td>
-          <td
-            data-testid="RBNO"
-          >
-            RB
-          </td>
-          <td
-            data-testid="6NO"
-          >
-            6
-          </td>
-          <td
-            data-testid="NONO"
-          >
-            NO
-          </td>
-          <td
-            data-testid="4NO"
-          >
-            4
-          </td>
-          <td
-            data-testid="1NO"
-          >
-            1
-          </td>
-          <td
-            data-testid="65.2NO"
-          >
-            65.2
-          </td>
-        </tr>
-        <tr>
-          <td
-            data-testid="3GB"
-          >
-            3
-          </td>
-          <td
-            data-testid="0.8GB"
-          >
-            0.8
-          </td>
-          <td
-            data-testid="-0.7GB"
-          >
-            -0.7
-          </td>
-          <td
-            data-testid="0GB"
-          >
-            0
-          </td>
-          <td
-            data-testid="0.0GB"
-          >
-            0.0
-          </td>
-          <td
-            data-testid="0GB"
-          >
-            0
-          </td>
-          <td
-            data-testid="1GB"
-          >
-            1
-          </td>
-          <td
-            data-testid="0GB"
-          >
-            0
-          </td>
-          <td
-            data-testid="Brett HundleyGB"
-          >
-            Brett Hundley
-          </td>
-          <td
-            data-testid="QBGB"
-          >
-            QB
-          </td>
-          <td
-            data-testid="0GB"
-          >
-            0
-          </td>
-          <td
-            data-testid="GBGB"
-          >
-            GB
-          </td>
-          <td
-            data-testid="0GB"
-          >
-            0
-          </td>
-          <td
-            data-testid="-2GB"
-          >
-            -2
-          </td>
-          <td
-            data-testid="-0.5GB"
-          >
-            -0.5
-          </td>
-        </tr>
-      </tbody>
-    </table>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="2JAX"
+                >
+                  2
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="2.0JAX"
+                >
+                  2.0
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="3.5JAX"
+                >
+                  3.5
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="0JAX"
+                >
+                  0
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="0.0JAX"
+                >
+                  0.0
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="0JAX"
+                >
+                  0
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="0JAX"
+                >
+                  0
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="7JAX"
+                >
+                  7
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="Joe BanyardJAX"
+                >
+                  Joe Banyard
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="RBJAX"
+                >
+                  RB
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="0JAX"
+                >
+                  0
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="JAXJAX"
+                >
+                  JAX
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="0JAX"
+                >
+                  0
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="7JAX"
+                >
+                  7
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="7.0JAX"
+                >
+                  7.0
+                </td>
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="205NO"
+                >
+                  205
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="12.8NO"
+                >
+                  12.8
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="5.1NO"
+                >
+                  5.1
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="49NO"
+                >
+                  49
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="23.9NO"
+                >
+                  23.9
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="2NO"
+                >
+                  2
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="2NO"
+                >
+                  2
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="75TNO"
+                >
+                  75T
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="Mark IngramNO"
+                >
+                  Mark Ingram
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="RBNO"
+                >
+                  RB
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="6NO"
+                >
+                  6
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="NONO"
+                >
+                  NO
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="4NO"
+                >
+                  4
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="1NO"
+                >
+                  1
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="65.2NO"
+                >
+                  65.2
+                </td>
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="3GB"
+                >
+                  3
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="0.8GB"
+                >
+                  0.8
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="-0.7GB"
+                >
+                  -0.7
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="0GB"
+                >
+                  0
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="0.0GB"
+                >
+                  0.0
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="0GB"
+                >
+                  0
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="1GB"
+                >
+                  1
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="0GB"
+                >
+                  0
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="Brett HundleyGB"
+                >
+                  Brett Hundley
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="QBGB"
+                >
+                  QB
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="0GB"
+                >
+                  0
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="GBGB"
+                >
+                  GB
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="0GB"
+                >
+                  0
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="-2GB"
+                >
+                  -2
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                  data-testid="-0.5GB"
+                >
+                  -0.5
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
   </section>
 </main>
 `;
