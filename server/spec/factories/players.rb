@@ -10,6 +10,7 @@ FactoryBot.define do
     ydsg { Faker::Number.decimal(l_digits: 2) }
     td { Faker::Number.within(range: -10..10) }
     lng { Faker::Number.within(range: -10..10).to_s }
+    sortByLng { Faker::Number.within(range: -10..10) }
     first { Faker::Number.within(range: -10..10) }
     first_precentage { Faker::Number.decimal(l_digits: 2) }
     twenty_plus { Faker::Number.within(range: -10..10) }

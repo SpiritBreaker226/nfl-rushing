@@ -72,5 +72,37 @@ RSpec.describe Player, type: :model do
         end
       end
     end
+
+    context 'when doing pagination' do
+      before(:each) do
+        create_list(:player, 30)
+      end
+
+      context 'and searching for names' do
+        it 'find all players name Zoe' do
+          create_list(:player, 2, player: "Zoe #{Faker::Name.last_name}")
+
+          page_players = Player.search(page: 1, name: 'zoe')
+
+          expect(page_players.count).to eq(2)
+        end
+      end
+
+      context 'and when sorting by' do
+         it 'sort by td on all players' do
+          create_list(:player, 20)
+          test_player = create(
+            :player,
+            player: "Jackie #{Faker::Name.last_name}",
+            yds: 11,
+            td: -20
+          )
+
+          page_players = Player.search(page: 1, sort_by: 'td')
+
+          expect(page_players.first['player']).to eq(test_player['player'])
+        end
+      end
+    end
   end
 end
