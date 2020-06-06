@@ -14,7 +14,9 @@ const mockedAxios = axios as jest.Mocked<typeof axios>
 describe('App', () => {
   describe('fetch player data', () => {
     beforeEach(async () => {
-      mockedAxios.get.mockResolvedValueOnce({ data: { data: players } })
+      mockedAxios.get.mockResolvedValueOnce({
+        data: { players: { data: players } },
+      })
 
       render(<App />)
 
@@ -36,7 +38,9 @@ describe('App', () => {
           target: { value: 'brett' },
         })
 
-        mockedAxios.get.mockResolvedValueOnce({ data: { data: [players[2]] } })
+        mockedAxios.get.mockResolvedValueOnce({
+          data: { players: { data: [players[2]] } },
+        })
 
         fireEvent.click(screen.getByText('Search'))
 
@@ -94,7 +98,7 @@ describe('App', () => {
           })
 
           mockedAxios.get.mockResolvedValueOnce({
-            data: { data: [players[2]] },
+            data: { players: { data: [players[2]] } },
           })
 
           fireEvent.click(screen.getByText('Search'))
@@ -179,7 +183,7 @@ describe('App', () => {
 
   describe('when loading the page', () => {
     it('should not render no player message and display loading text', async () => {
-      mockedAxios.get.mockResolvedValueOnce({ data: { data: [] } })
+      mockedAxios.get.mockResolvedValueOnce({ data: { players: { data: [] } } })
 
       render(<App />)
 

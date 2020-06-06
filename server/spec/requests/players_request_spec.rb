@@ -13,7 +13,7 @@ RSpec.describe "Players", type: :request do
         json = JSON.parse(response.body)
 
         expect(json).not_to be_empty
-        expect(json['data'].count).to eq(10)
+        expect(json['players']['data'].count).to eq(10)
       end
 
       it 'returns status code 200' do
@@ -30,7 +30,7 @@ RSpec.describe "Players", type: :request do
         json = JSON.parse(response.body)
 
         expect(json).not_to be_empty
-        expect(json['data'].count).to eq(10)
+        expect(json['players']['data'].count).to eq(10)
         expect(response).to have_http_status(200)
       end
 
@@ -40,7 +40,7 @@ RSpec.describe "Players", type: :request do
 
           json = JSON.parse(response.body)
 
-          expect(json['data']).to be_empty
+          expect(json['players']['data']).to be_empty
           expect(response).to have_http_status(200)
         end
       end
@@ -64,7 +64,7 @@ RSpec.describe "Players", type: :request do
         json = JSON.parse(response.body)
 
         expect(
-          json['data'].first['attributes']['player']
+          json['players']['data'].first['attributes']['player']
         ).to eq(@test_player['player'])
 
         expect(response).to have_http_status(200)
@@ -76,7 +76,7 @@ RSpec.describe "Players", type: :request do
         json = JSON.parse(response.body)
 
         expect(
-          json['data'].first['attributes']['player']
+          json['players']['data'].first['attributes']['player']
         ).to eq(@test_player['player'])
 
         expect(response).to have_http_status(200)

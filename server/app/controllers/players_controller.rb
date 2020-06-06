@@ -16,9 +16,17 @@ class PlayersController < ApplicationController
 #
     respond_to do |format|
       format.json do
+        current_page = params["page"]
+
         render(
-          json: PlayerSerializer.new(players).serializable_hash.to_json,
-          status: :ok
+          json: {
+            players: PlayerSerializer.new(players).serializable_hash,
+            pagination: {
+              rows_per_page: players.page(current_page).limit_value,
+              page_total: players.page(current_page).total_pages,
+              current_page: current_page
+            },
+          }.to_json
         )
       end
       format.csv {
