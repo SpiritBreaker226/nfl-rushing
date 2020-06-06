@@ -13,16 +13,16 @@ RSpec.describe Player, type: :model do
     it 'find all players name Zoe' do
       create_list(:player, 2, player: "Zoe #{Faker::Name.last_name}")
 
-      found_all_joes = Player.search(name: 'zoe')
+      found_all = Player.search(name: 'zoe')
 
-      expect(found_all_joes.count).to eq(2)
+      expect(found_all.count).to eq(2)
     end
 
     context 'when no players are found' do
       it 'should be an empty array' do
-        found_all_joes = Player.search(name: 'bob')
+        found_all = Player.search(name: 'bob')
 
-        expect(found_all_joes.count).to eq(0)
+        expect(found_all.count).to eq(0)
       end
     end
 
