@@ -3,10 +3,11 @@ class PlayersController < ApplicationController
 
   def index
     players = Player.search(
-      params["name"],
-      params["sort_by"],
-      params["sort_by_dir"]
+      name: params["name"],
+      sort_by: params["sort_by"],
+      sort_by_dir: params["sort_by_dir"]
     )
+
 
     respond_to do |format|
       format.json do

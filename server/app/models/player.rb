@@ -1,5 +1,5 @@
 class Player < ApplicationRecord
-  def self.search(name = nil, sort_by = nil, sort_by_dir = nil)
+  def self.search(name: nil, sort_by: nil, sort_by_dir: nil)
     players =
       name.nil? ?
         Player.all

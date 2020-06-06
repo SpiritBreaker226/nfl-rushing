@@ -13,14 +13,14 @@ RSpec.describe Player, type: :model do
     it 'find all players name Zoe' do
       create_list(:player, 2, player: "Zoe #{Faker::Name.last_name}")
 
-      found_all_joes = Player.search('zoe')
+      found_all_joes = Player.search(name: 'zoe')
 
       expect(found_all_joes.count).to eq(2)
     end
 
     context 'when no players are found' do
       it 'should be an empty array' do
-        found_all_joes = Player.search('bob')
+        found_all_joes = Player.search(name: 'bob')
 
         expect(found_all_joes.count).to eq(0)
       end
@@ -39,28 +39,28 @@ RSpec.describe Player, type: :model do
       end
 
       it 'sort by Yds on all players' do
-        all_found = Player.search(nil, 'yds', 'desc')
+        all_found = Player.search(sort_by: 'yds', sort_by_dir: 'desc')
 
         expect(all_found.first['player']).to eq(@test_player['player'])
       end
 
       it 'sort by TD on players name Jackie' do
-        all_found = Player.search(nil, 'td', 'asc')
+        all_found = Player.search(sort_by: 'td', sort_by_dir: 'asc')
 
         expect(all_found.first['player']).to eq(@test_player['player'])
       end
 
-      context 'when no sort by direction is set' do
+      context 'and no sort by direction is set' do
         it 'sort by ascending order by default' do
-          all_found = Player.search(nil, 'td')
+          all_found = Player.search(sort_by: 'td')
 
           expect(all_found.first['player']).to eq(@test_player['player'])
         end
       end
 
-      context 'when sort by field does not exist' do
+      context 'and sort by field does not exist' do
         it 'unsorted results' do
-          all_found = Player.search(nil, 'not_a_feild')
+          all_found = Player.search(sort_by: 'not_a_feild')
 
           expect(all_found.last['player']).to eq(@test_player['player'])
         end
