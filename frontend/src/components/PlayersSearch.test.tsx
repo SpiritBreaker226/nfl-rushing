@@ -13,9 +13,10 @@ const mockedAxios = axios as jest.Mocked<typeof axios>
 
 describe('PlayersSearch', () => {
   it('renders players search', async () => {
-    render(<PlayersSearch />)
+    const { getByRole, getByText } = render(<PlayersSearch />)
 
-    expect(screen.getByText('Search', { exact: false })).toBeInTheDocument()
+    expect(getByText('Search', { exact: false })).toBeInTheDocument()
+    expect(getByRole('textbox')).toBeInTheDocument()
   })
 
   it('should search on enter from textbox', () => {
