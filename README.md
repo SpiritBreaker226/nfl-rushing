@@ -70,17 +70,21 @@ If you have any questions regarding requirements, do not hesitate to email your 
 
 ###### Pre Requirements
 
-- Ruby 2.7.1
+- Ruby 2.5.0 or newer
 - Rails 6.0
-- Bundler Gem
+- Bundler
+- Gem
 
 ###### To Install
 
-1. In the terminal make sure you are in the project's root directory
-2. Go to `cd server` directory
-3. Run `bundle install`
-4. Run `rails db:migrate`
-5. Run `rails db:seed`
+1. If you do not have the newest version or ruby use either `rbenv install 2.7.1 && rbenv global 2.7.1`
+   or `rvm install 2.7.1 && rvm use 2.7.1`
+2. `gem update rails` to install the latest version is correctly 6.0
+3. Make sure you are in the project's root directory
+4. Go to `cd server` directory
+5. Run `bundle`
+6. Run `rails db:migrate`
+7. Run `rails db:seed`
 
 ###### Usage
 
