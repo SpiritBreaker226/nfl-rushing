@@ -65,10 +65,10 @@ RSpec.describe Player, type: :model do
       end
 
       context 'and sort by field does not exist' do
-        it 'unsorted results' do
+        it 'return nil' do
           all_found = Player.search(sort_by: 'not_a_feild')
 
-          expect(all_found.last['player']).to eq(@test_player['player'])
+          expect(all_found).to be_nil
         end
       end
     end

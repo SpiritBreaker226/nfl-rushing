@@ -1,20 +1,17 @@
 class Player < ApplicationRecord
   def self.search(name: nil, page: nil, sort_by: nil, sort_by_dir: nil)
+    return nil if sort_by.nil? == false && Player.has_attribute?(sort_by) == false
+
+    order = sort_by_dir || 'asc'
+    order_by = sort_by || 'player'
+
     players =
       name.nil? ?
-        Player.all
+        Player.all.order(order_by.to_sym => order.to_sym)
       :
-        Player.where("LOWER(player) LIKE ?", "%#{name.downcase}%")
-
-    players = if sort_by.nil? || players.has_attribute?(sort_by) == false
-      players
-    else
-      if sort_by_dir.nil? == false && sort_by_dir == 'desc'
-        players.order(sort_by.to_sym => :desc)
-      else
-        players.order(sort_by.to_sym)
-      end
-    end
+        Player
+          .where("LOWER(player) LIKE ?", "%#{name.downcase}%")
+          .order(order_by.to_sym => order.to_sym)
 
     page.nil? ? players : players.page(page)
   end
