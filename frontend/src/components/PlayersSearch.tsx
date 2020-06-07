@@ -52,6 +52,7 @@ const PlayersSearch = () => {
         type="text"
         name="searchBox"
         id="searchBox"
+        data-testid="searchBox"
         value={state.search}
         placeholder="Search by Name"
         className={classes.searchText}

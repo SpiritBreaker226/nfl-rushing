@@ -13,14 +13,14 @@ const mockedAxios = axios as jest.Mocked<typeof axios>
 
 describe('PlayersSearch', () => {
   it('renders players search', async () => {
-    const { getByRole, getByText } = render(<PlayersSearch />)
+    const { getByTestId, getByText } = render(<PlayersSearch />)
 
     expect(getByText('Search', { exact: false })).toBeInTheDocument()
-    expect(getByRole('textbox')).toBeInTheDocument()
+    expect(getByTestId('searchBox')).toBeInTheDocument()
   })
 
-  it('should search on enter from textbox', () => {
-    const { getByRole } = render(
+  it('should search on enter from searchBox', () => {
+    const { getByTestId } = render(
       <MakeWrapper
         state={{
           search: 'joe',
@@ -35,7 +35,7 @@ describe('PlayersSearch', () => {
       </MakeWrapper>
     )
 
-    const searchBox = getByRole('textbox')
+    const searchBox = getByTestId('searchBox')
 
     // pissble bu testing libaray not firing the key press
     fireEvent.keyPress(searchBox, { key: 'Enter', code: 'Enter' })

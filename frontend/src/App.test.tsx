@@ -40,7 +40,7 @@ describe('App', () => {
 
     describe('when searching', () => {
       it('find player name Brett', async () => {
-        fireEvent.change(screen.getByRole('textbox'), {
+        fireEvent.change(screen.getByTestId('searchBox'), {
           target: { value: 'brett' },
         })
 
@@ -54,24 +54,24 @@ describe('App', () => {
           screen.getByText('Loading', { exact: false })
         ).toBeInTheDocument()
 
-        await waitFor(() => screen.getByRole('textbox'))
+        await waitFor(() => screen.getByTestId('searchBox'))
 
         expect(mockedAxios.get).toHaveBeenLastCalledWith(
           `${process.env.REACT_APP_BASE_API_URL}/players?name=brett&page=1`
         )
 
-        expect(screen.getByRole('textbox')).toHaveDisplayValue('brett')
+        expect(screen.getByTestId('searchBox')).toHaveDisplayValue('brett')
 
         expect(screen.getByTestId('Brett HundleyGB')).toHaveTextContent(
           /brett/i
         )
         expect(screen.getAllByRole('row').length).toEqual(2)
 
-        fireEvent.change(screen.getByRole('textbox'), {
+        fireEvent.change(screen.getByTestId('searchBox'), {
           target: { value: 'mike' },
         })
 
-        expect(screen.getByRole('textbox')).toHaveDisplayValue('mike')
+        expect(screen.getByTestId('searchBox')).toHaveDisplayValue('mike')
       })
 
       it("reset player's table and URL on blank textbox", async () => {
@@ -99,7 +99,7 @@ describe('App', () => {
         })
 
         it('download a csv a player name mark', async () => {
-          fireEvent.change(screen.getByRole('textbox'), {
+          fireEvent.change(screen.getByTestId('searchBox'), {
             target: { value: 'mark' },
           })
 
@@ -113,7 +113,7 @@ describe('App', () => {
             screen.getByText('Loading', { exact: false })
           ).toBeInTheDocument()
 
-          await waitFor(() => screen.getByRole('textbox'))
+          await waitFor(() => screen.getByTestId('searchBox'))
 
           expect(
             screen.getByText('Download', { exact: false }).getAttribute('href')
@@ -125,7 +125,7 @@ describe('App', () => {
         it('download a csv on sorted players', async () => {
           fireEvent.click(screen.getByTestId('yds'))
 
-          await waitFor(() => screen.getByRole('textbox'))
+          await waitFor(() => screen.getByTestId('searchBox'))
 
           expect(
             screen.getByText('Download', { exact: false }).getAttribute('href')
@@ -144,7 +144,7 @@ describe('App', () => {
           screen.queryByText('Loading', { exact: false })
         ).toBeInTheDocument()
 
-        await waitFor(() => screen.getByRole('textbox'))
+        await waitFor(() => screen.getByTestId('searchBox'))
 
         expect(mockedAxios.get).toHaveBeenLastCalledWith(
           `${process.env.REACT_APP_BASE_API_URL}/players?page=1&sort_by=yds&sort_by_dir=asc`
@@ -152,7 +152,7 @@ describe('App', () => {
 
         fireEvent.click(screen.getByTestId('yds'))
 
-        await waitFor(() => screen.getByRole('textbox'))
+        await waitFor(() => screen.getByTestId('searchBox'))
 
         expect(mockedAxios.get).toHaveBeenLastCalledWith(
           `${process.env.REACT_APP_BASE_API_URL}/players?page=1&sort_by=yds&sort_by_dir=desc`
@@ -162,7 +162,7 @@ describe('App', () => {
       it('should reset direction when changing sorted field', async () => {
         fireEvent.click(screen.getByTestId('yds'))
 
-        await waitFor(() => screen.getByRole('textbox'))
+        await waitFor(() => screen.getByTestId('searchBox'))
 
         expect(mockedAxios.get).toHaveBeenLastCalledWith(
           `${process.env.REACT_APP_BASE_API_URL}/players?page=1&sort_by=yds&sort_by_dir=asc`
@@ -170,7 +170,7 @@ describe('App', () => {
 
         fireEvent.click(screen.getByTestId('td'))
 
-        await waitFor(() => screen.getByRole('textbox'))
+        await waitFor(() => screen.getByTestId('searchBox'))
 
         expect(mockedAxios.get).toHaveBeenLastCalledWith(
           `${process.env.REACT_APP_BASE_API_URL}/players?page=1&sort_by=td&sort_by_dir=asc`
@@ -178,7 +178,7 @@ describe('App', () => {
 
         fireEvent.click(screen.getByTestId('td'))
 
-        await waitFor(() => screen.getByRole('textbox'))
+        await waitFor(() => screen.getByTestId('searchBox'))
 
         expect(mockedAxios.get).toHaveBeenLastCalledWith(
           `${process.env.REACT_APP_BASE_API_URL}/players?page=1&sort_by=td&sort_by_dir=desc`
@@ -207,7 +207,7 @@ describe('App', () => {
         screen.queryByText('No Players Found', { exact: false })
       ).not.toBeInTheDocument()
 
-      await waitFor(() => screen.getByRole('textbox'))
+      await waitFor(() => screen.getByTestId('searchBox'))
 
       expect(
         screen.queryByText('Loading', { exact: false })
