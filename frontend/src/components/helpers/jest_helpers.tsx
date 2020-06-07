@@ -5,6 +5,7 @@ import { Direction } from '../../types/PlayerQuery'
 import { Pagination } from '../../types/Pagination'
 
 import { AppContext } from '../../contexts/AppContext'
+import { Action } from '../../types/Actions'
 
 export const players: Player[] = [
   {
@@ -81,10 +82,12 @@ export interface TestingState {
 
 export interface MakeWrapperProps {
   state: TestingState
+  dispatch?: (action: Action) => void
 }
 
 export const MakeWrapper: FunctionComponent<MakeWrapperProps> = ({
   state,
+  dispatch,
   children,
 }) => (
   <AppContext.Provider
@@ -106,7 +109,7 @@ export const MakeWrapper: FunctionComponent<MakeWrapperProps> = ({
         isLoading: false,
         ...state,
       },
-      dispatch: () => null,
+      dispatch: dispatch || (() => null),
     }}
   >
     {children}
