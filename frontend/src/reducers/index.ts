@@ -7,6 +7,7 @@ export const playersReducer = (state: InitialState, action: Action) => {
         ...state,
         isLoading: action.payload.isLoading,
         players: action.payload.players || [],
+        pagination: action.payload.pagination,
       }
     default:
       return state

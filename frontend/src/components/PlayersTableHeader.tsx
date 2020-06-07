@@ -42,7 +42,11 @@ const PlayersTableHeader = () => {
     if (sortByField !== state.sorting.fieldName) dir = 'asc'
 
     setParamsCallback({
-      params: { sort_by: sortByField, sort_by_dir: dir },
+      params: {
+        sort_by: sortByField,
+        sort_by_dir: dir,
+        page: state.pagination.current_page.toString(),
+      },
       url: state.urlToPlayersEndpoint,
       dispatch,
     })

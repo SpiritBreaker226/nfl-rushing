@@ -11,11 +11,17 @@ import App from './App'
 jest.mock('axios')
 const mockedAxios = axios as jest.Mocked<typeof axios>
 
+const pagination = {
+  rows_per_page: 10,
+  page_total: 20,
+  current_page: '1',
+}
+
 describe('App', () => {
   describe('fetch player data', () => {
     beforeEach(async () => {
       mockedAxios.get.mockResolvedValueOnce({
-        data: { players: { data: players } },
+        data: { players: { data: players }, pagination },
       })
 
       render(<App />)
@@ -26,7 +32,7 @@ describe('App', () => {
     it('renders players component', () => {
       expect(mockedAxios.get).toHaveBeenCalledTimes(1)
       expect(mockedAxios.get).toHaveBeenCalledWith(
-        `${process.env.REACT_APP_BASE_API_URL}/players`
+        `${process.env.REACT_APP_BASE_API_URL}/players?page=1`
       )
       expect(screen.getByRole('heading')).toHaveTextContent('Player')
       expect(screen.getByRole('main')).toMatchSnapshot()
@@ -39,7 +45,7 @@ describe('App', () => {
         })
 
         mockedAxios.get.mockResolvedValueOnce({
-          data: { players: { data: [players[2]] } },
+          data: { players: { data: [players[2]] }, pagination },
         })
 
         fireEvent.click(screen.getByText('Search'))
@@ -51,7 +57,7 @@ describe('App', () => {
         await waitFor(() => screen.getByRole('textbox'))
 
         expect(mockedAxios.get).toHaveBeenLastCalledWith(
-          `${process.env.REACT_APP_BASE_API_URL}/players?name=brett`
+          `${process.env.REACT_APP_BASE_API_URL}/players?name=brett&page=1`
         )
 
         expect(screen.getByRole('textbox')).toHaveDisplayValue('brett')
@@ -74,7 +80,7 @@ describe('App', () => {
         await waitFor(() => screen.getByRole('heading'))
 
         expect(mockedAxios.get).toHaveBeenLastCalledWith(
-          `${process.env.REACT_APP_BASE_API_URL}/players`
+          `${process.env.REACT_APP_BASE_API_URL}/players?page=1`
         )
         expect(screen.getByTestId('Mark IngramNO')).toHaveTextContent(/mark/i)
         expect(screen.getByTestId('Brett HundleyGB')).toHaveTextContent(
@@ -98,7 +104,7 @@ describe('App', () => {
           })
 
           mockedAxios.get.mockResolvedValueOnce({
-            data: { players: { data: [players[2]] } },
+            data: { players: { data: [players[2]] }, pagination },
           })
 
           fireEvent.click(screen.getByText('Search'))
@@ -141,7 +147,7 @@ describe('App', () => {
         await waitFor(() => screen.getByRole('textbox'))
 
         expect(mockedAxios.get).toHaveBeenLastCalledWith(
-          `${process.env.REACT_APP_BASE_API_URL}/players?sort_by=yds&sort_by_dir=asc`
+          `${process.env.REACT_APP_BASE_API_URL}/players?page=1&sort_by=yds&sort_by_dir=asc`
         )
 
         fireEvent.click(screen.getByTestId('yds'))
@@ -149,7 +155,7 @@ describe('App', () => {
         await waitFor(() => screen.getByRole('textbox'))
 
         expect(mockedAxios.get).toHaveBeenLastCalledWith(
-          `${process.env.REACT_APP_BASE_API_URL}/players?sort_by=yds&sort_by_dir=desc`
+          `${process.env.REACT_APP_BASE_API_URL}/players?page=1&sort_by=yds&sort_by_dir=desc`
         )
       })
 
@@ -159,7 +165,7 @@ describe('App', () => {
         await waitFor(() => screen.getByRole('textbox'))
 
         expect(mockedAxios.get).toHaveBeenLastCalledWith(
-          `${process.env.REACT_APP_BASE_API_URL}/players?sort_by=yds&sort_by_dir=asc`
+          `${process.env.REACT_APP_BASE_API_URL}/players?page=1&sort_by=yds&sort_by_dir=asc`
         )
 
         fireEvent.click(screen.getByTestId('td'))
@@ -167,7 +173,7 @@ describe('App', () => {
         await waitFor(() => screen.getByRole('textbox'))
 
         expect(mockedAxios.get).toHaveBeenLastCalledWith(
-          `${process.env.REACT_APP_BASE_API_URL}/players?sort_by=td&sort_by_dir=asc`
+          `${process.env.REACT_APP_BASE_API_URL}/players?page=1&sort_by=td&sort_by_dir=asc`
         )
 
         fireEvent.click(screen.getByTestId('td'))
@@ -175,7 +181,7 @@ describe('App', () => {
         await waitFor(() => screen.getByRole('textbox'))
 
         expect(mockedAxios.get).toHaveBeenLastCalledWith(
-          `${process.env.REACT_APP_BASE_API_URL}/players?sort_by=td&sort_by_dir=desc`
+          `${process.env.REACT_APP_BASE_API_URL}/players?page=1&sort_by=td&sort_by_dir=desc`
         )
       })
     })
@@ -183,7 +189,9 @@ describe('App', () => {
 
   describe('when loading the page', () => {
     it('should not render no player message and display loading text', async () => {
-      mockedAxios.get.mockResolvedValueOnce({ data: { players: { data: [] } } })
+      mockedAxios.get.mockResolvedValueOnce({
+        data: { players: { data: [] }, pagination },
+      })
 
       render(<App />)
 

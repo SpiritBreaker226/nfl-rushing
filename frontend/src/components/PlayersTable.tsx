@@ -8,11 +8,14 @@ import {
   TableCell,
   Typography,
 } from '@material-ui/core'
+import { Pagination } from '@material-ui/lab'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 
 import { Player, Stats } from '../types/Players'
 
 import { AppContext } from '../contexts/AppContext'
+
+import { setParamsCallback } from './helpers/helpers'
 
 import PlayersTableHeader from './PlayersTableHeader'
 
@@ -22,12 +25,16 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(10),
       textAlign: 'center',
     },
+    pagination: {
+      margin: theme.spacing(2),
+      float: 'right',
+    },
   })
 )
 
 const PlayersTable = () => {
   const classes = useStyles()
-  const { state } = useContext(AppContext)
+  const { state, dispatch } = useContext(AppContext)
 
   if (state.isLoading) return null
 
@@ -37,6 +44,13 @@ const PlayersTable = () => {
         <Typography variant="h4">No Players Found</Typography>
       </section>
     )
+  }
+  const handleChangePage = (e: unknown, newPage: number) => {
+    setParamsCallback({
+      params: { page: newPage.toString() },
+      url: state.urlToPlayersEndpoint,
+      dispatch,
+    })
   }
 
   return (
@@ -67,6 +81,16 @@ const PlayersTable = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      {state.pagination.page_total > 1 && (
+        <Pagination
+          data-testid="pagination"
+          className={classes.pagination}
+          shape="rounded"
+          count={state.pagination.page_total}
+          page={Number(state.pagination.current_page)}
+          onChange={handleChangePage}
+        />
+      )}
     </section>
   )
 }

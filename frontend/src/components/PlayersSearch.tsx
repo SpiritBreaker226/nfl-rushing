@@ -42,7 +42,7 @@ const PlayersSearch = () => {
         variant="outlined"
         onClick={() => {
           setParamsCallback({
-            params: { name: state.search },
+            params: { name: state.search, page: '1' },
             url: state.urlToPlayersEndpoint,
             dispatch,
           })

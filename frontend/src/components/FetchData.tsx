@@ -35,7 +35,8 @@ const FetchData: FunctionComponent = () => {
         dispatch({
           type: Types.UpdatePlayers,
           payload: {
-            players: res.data.data,
+            players: res.data.players.data,
+            pagination: res.data.pagination,
             isLoading: false,
           },
         })

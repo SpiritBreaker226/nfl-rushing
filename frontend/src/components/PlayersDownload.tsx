@@ -44,7 +44,7 @@ const PlayersDownload = () => {
   const currentURL = queryString.parseUrl(state.urlToPlayersEndpoint)
   const csvLink = queryString.stringifyUrl({
     url: `${currentURL.url}.csv`,
-    query: currentURL.query,
+    query: { ...currentURL.query, page: undefined },
   })
 
   return (
