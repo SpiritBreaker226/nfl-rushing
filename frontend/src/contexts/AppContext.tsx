@@ -16,6 +16,11 @@ import {
 const initialState: InitialState = {
   players: [],
   urlToPlayersEndpoint: `${process.env.REACT_APP_BASE_API_URL}/players`,
+  pagination: {
+    rows_per_page: 25,
+    page_total: 0,
+    current_page: '1',
+  },
   search: '',
   sorting: {
     fieldName: undefined,

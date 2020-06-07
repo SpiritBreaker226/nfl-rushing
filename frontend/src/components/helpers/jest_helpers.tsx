@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 
 import { Player } from '../../types/Players'
 import { Direction } from '../../types/PlayerQuery'
+import { Pagination } from '../../types/Pagination'
 
 import { AppContext } from '../../contexts/AppContext'
 
@@ -67,6 +68,7 @@ export const players: Player[] = [
 
 export interface TestingState {
   players?: Player[]
+  pagination?: Pagination
   urlToPlayersEndpoint?: string
   search?: string
   errorMessage?: string
@@ -89,6 +91,11 @@ export const MakeWrapper: FunctionComponent<MakeWrapperProps> = ({
     value={{
       state: {
         players: [],
+        pagination: {
+          rows_per_page: 10,
+          page_total: 0,
+          current_page: '1',
+        },
         urlToPlayersEndpoint: '',
         search: '',
         errorMessage: '',

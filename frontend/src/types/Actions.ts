@@ -1,8 +1,10 @@
 import { Player } from './Players'
+import { Pagination } from './Pagination'
 import { Sorting } from './PlayerQuery'
 
 export interface InitialState {
   players: Player[]
+  pagination: Pagination
   urlToPlayersEndpoint: string
   search: string
   errorMessage: string
@@ -22,6 +24,7 @@ export enum Types {
 interface PlayersPayload {
   [Types.UpdatePlayers]: {
     players: Player[]
+    pagination: Pagination
     isLoading: boolean
   }
 }
