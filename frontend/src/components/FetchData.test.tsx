@@ -7,6 +7,7 @@ import axios from 'axios'
 import { MakeWrapper } from './helpers/jest_helpers'
 
 import FetchData from './FetchData'
+import PlayersTable from './PlayersTable'
 
 jest.mock('axios')
 const mockedAxios = axios as jest.Mocked<typeof axios>
@@ -36,12 +37,16 @@ describe('FetchData', () => {
               errorMessage: 'fake error message',
             }}
           >
+            <PlayersTable />
             <FetchData />
           </MakeWrapper>
         )
 
         await waitFor(() => screen.getByText('error', { exact: false }))
 
+        expect(
+          screen.queryByText('No Players Found', { exact: false })
+        ).not.toBeInTheDocument()
         expect(screen.getByText('error', { exact: false })).toBeInTheDocument()
         expect(screen.getByText('error', { exact: false })).toMatchSnapshot()
       })

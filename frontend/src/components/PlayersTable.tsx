@@ -36,7 +36,7 @@ const PlayersTable = () => {
   const classes = useStyles()
   const { state, dispatch } = useContext(AppContext)
 
-  if (state.isLoading) return null
+  if (state.isLoading || state.errorMessage) return null
 
   if (state.players.length === 0) {
     return (
