@@ -1,4 +1,4 @@
-import React, { useContext, ChangeEvent } from 'react'
+import React, { useContext, ChangeEvent, KeyboardEvent } from 'react'
 
 import { Button, TextField } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
@@ -18,36 +18,48 @@ const useStyles = makeStyles(() =>
   })
 )
 
+export interface PlayersSearchProps {
+  onSearchClick: () => {}
+}
+
 const PlayersSearch = () => {
   const classes = useStyles()
   const { state, dispatch } = useContext(AppContext)
-  const handleChangeSearchValue = (e: ChangeEvent<HTMLInputElement>) =>
+  const handleChangeSearchBox = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: Types.UpdateSearch,
       payload: { search: e.target.value },
     })
+  }
+  const handleClickSearch = () => {
+    setParamsCallback({
+      params: { name: state.search, page: '1' },
+      url: state.urlToPlayersEndpoint,
+      dispatch,
+    })
+  }
+  const handleTextFieldKeyPress = (e: KeyboardEvent) => {
+    switch (e.key) {
+      case 'Enter':
+        handleClickSearch()
+        break
+    }
+  }
 
   return (
     <section>
       <TextField
         type="text"
-        name="searchValue"
-        id="searchValue"
+        name="searchBox"
+        id="searchBox"
         value={state.search}
         placeholder="Search by Name"
         className={classes.searchText}
-        onChange={handleChangeSearchValue}
+        onKeyPress={handleTextFieldKeyPress}
+        onChange={handleChangeSearchBox}
       />
-      <Button
-        variant="outlined"
-        onClick={() => {
-          setParamsCallback({
-            params: { name: state.search, page: '1' },
-            url: state.urlToPlayersEndpoint,
-            dispatch,
-          })
-        }}
-      >
+
+      <Button variant="outlined" onClick={handleClickSearch}>
         Search
       </Button>
     </section>

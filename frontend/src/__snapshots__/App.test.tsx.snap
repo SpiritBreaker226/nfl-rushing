@@ -31,8 +31,8 @@ exports[`App fetch player data renders players component 1`] = `
                 <input
                   aria-invalid="false"
                   class="MuiInputBase-input MuiInput-input"
-                  id="searchValue"
-                  name="searchValue"
+                  id="searchBox"
+                  name="searchBox"
                   placeholder="Search by Name"
                   type="text"
                   value=""
