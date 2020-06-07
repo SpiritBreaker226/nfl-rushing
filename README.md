@@ -114,7 +114,8 @@ From the 'server' directory
 
 ###### Usage
 
-Frontend server is running on `http://localhost:8080`
+Frontend is running on `http://localhost:8080`, you can vist the app once `yarn start`
+is turn on.
 
 From the 'frontend' directory
 
