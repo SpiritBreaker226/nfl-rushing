@@ -20,7 +20,7 @@ const pagination = {
 describe('App', () => {
   describe('fetch player data', () => {
     beforeEach(async () => {
-      mockedAxios.get.mockResolvedValueOnce({
+      mockedAxios.get.mockResolvedValue({
         data: { players: { data: players }, pagination },
       })
 
