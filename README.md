@@ -95,8 +95,9 @@ From the 'server' directory
 
 - To run the server use the command `rails s`
 - To run the test use the commend `rspec`
-
-_All other commends are the standard Rails commends which be found with the commend `rails --help`_
+- To add 10,000 more players run `rails db:seed:league` or `rails db:seed:league[any number of players]`
+  - If you are using Zsh you will need to use `\[` and `\]` around the arguments as it does parse rails
+    task correctly for example `rails db:seed:league\["10"\]`
 
 ##### Frontend
 
