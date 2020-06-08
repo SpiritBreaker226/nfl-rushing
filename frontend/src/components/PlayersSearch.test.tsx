@@ -19,24 +19,51 @@ describe('PlayersSearch', () => {
     expect(getByTestId('searchBox')).toBeInTheDocument()
   })
 
-  it('should search on enter from searchBox', () => {
-    const { getByTestId } = render(
-      <MakeWrapper
-        state={{
-          search: 'joe',
-        }}
-        dispatch={(action: Action) => {
-          if (action.type === Types.UpdateURL) {
-            expect(action.payload.params.name).toEqual('joe')
-          }
-        }}
-      >
-        <PlayersSearch />
-      </MakeWrapper>
-    )
+  describe('using searchBox', () => {
+    it('should search on enter', () => {
+      const { getByTestId } = render(
+        <MakeWrapper
+          state={{
+            search: 'joe',
+          }}
+          dispatch={(action: Action) => {
+            if (action.type === Types.UpdateURL) {
+              expect(action.payload.params.name).toEqual('joe')
+            }
+          }}
+        >
+          <PlayersSearch />
+        </MakeWrapper>
+      )
 
-    const searchBox = getByTestId('searchBox')
+      fireEvent.keyPress(getByTestId('searchBox'), {
+        key: 'Enter',
+        charCode: 13,
+      })
+    })
 
-    fireEvent.keyPress(searchBox, { key: 'Enter', charCode: 13 })
+    it('should not search on non-enter key', () => {
+      const { getByTestId } = render(
+        <MakeWrapper
+          state={{}}
+          dispatch={(action: Action) => {
+            if (action.type === Types.UpdateSearch) {
+              expect(action.payload.search).toEqual('j')
+            }
+          }}
+        >
+          <PlayersSearch />
+        </MakeWrapper>
+      )
+
+      fireEvent.keyPress(getByTestId('searchBox'), {
+        key: 'j',
+        charCode: 74,
+      })
+
+      fireEvent.change(screen.getByTestId('searchBox'), {
+        target: { value: 'j' },
+      })
+    })
   })
 })
