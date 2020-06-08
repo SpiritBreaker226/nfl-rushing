@@ -95,6 +95,7 @@ From the 'server' directory
 
 - To run the server use the command `rails s`
 - To run the test with code coverage use the commend `rspec`
+  - To open code coverage in the 'server' directory type `open coverage/index.html`
 - To add 10,000 more players run `rails db:seed:league` or `rails db:seed:league[any number of players]`
   - If you are using Zsh you will need to use `\[` and `\]` around the arguments as it does parse rails
     task correctly for example `rails db:seed:league\["10"\]`
@@ -121,4 +122,5 @@ From the 'frontend' directory
 
 - To run the frontend use the commend `yarn start`
 - To run the test with code coverage use the commend `yarn test`
+  - To open code coverage in the 'frontend' directory type `open coverage/lcov-report/index.html`
 - To run the test in watch mode use the commend `yarn test:watch`
