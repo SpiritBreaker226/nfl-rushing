@@ -56,6 +56,20 @@ RSpec.describe Player, type: :model do
         expect(all_found.first['player']).to eq(@test_player['player'])
       end
 
+      it 'sort by names names with the same value' do
+        @ace_test_player = create(
+          :player,
+          player: "Ace #{Faker::Name.last_name}",
+          yds: 11,
+          td: -20
+        )
+
+        all_found = Player.search(sort_by: 'yds', sort_by_dir: 'desc')
+
+        expect(all_found.first['player']).to eq(@ace_test_player['player'])
+        expect(all_found.second['player']).to eq(@test_player['player'])
+      end
+
       context 'and no sort by direction is set' do
         it 'sort by ascending order by default' do
           all_found = Player.search(sort_by: 'td')

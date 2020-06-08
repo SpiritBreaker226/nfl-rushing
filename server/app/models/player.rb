@@ -7,11 +7,11 @@ class Player < ApplicationRecord
 
     players =
       name.nil? ?
-        Player.all.order(order_by.to_sym => order.to_sym)
+        Player.all.order(order_by.to_sym => order.to_sym, player: :asc)
       :
         Player
           .where("LOWER(player) LIKE ?", "%#{name.downcase}%")
-          .order(order_by.to_sym => order.to_sym)
+          .order(order_by.to_sym => order.to_sym, player: :asc)
 
     page.nil? ? players : players.page(page)
   end
