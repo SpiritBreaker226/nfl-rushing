@@ -37,7 +37,6 @@ describe('PlayersSearch', () => {
 
     const searchBox = getByTestId('searchBox')
 
-    // pissble bu testing libaray not firing the key press
-    fireEvent.keyPress(searchBox, { key: 'Enter', code: 'Enter' })
+    fireEvent.keyPress(searchBox, { key: 'Enter', charCode: 13 })
   })
 })
