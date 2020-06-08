@@ -120,5 +120,5 @@ is turn on.
 From the 'frontend' directory
 
 - To run the frontend use the commend `yarn start`
-- To run the test use the commend `yarn test`
+- To run the test with code coverage use the commend `yarn test`
 - To run the test in watch mode use the commend `yarn test:watch`
