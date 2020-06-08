@@ -221,5 +221,23 @@ describe('App', () => {
         screen.queryByText('No Players Found', { exact: false })
       ).toBeInTheDocument()
     })
+
+    describe('on error from the server', () => {
+      it('should render an error message', async () => {
+        mockedAxios.get.mockRejectedValue(new Error('fake error message'))
+
+        render(<App />)
+
+        await waitFor(() => screen.getByText('error', { exact: false }))
+
+        expect(
+          screen.queryByText('No Players Found', { exact: false })
+        ).not.toBeInTheDocument()
+
+        expect(
+          screen.getByText('fake error message', { exact: false })
+        ).toBeInTheDocument()
+      })
+    })
   })
 })
