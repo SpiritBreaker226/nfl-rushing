@@ -50,7 +50,7 @@ const PlayersDownload = () => {
   return (
     <section className={classes.download}>
       <Link href={csvLink} data-testid="download_csv" className={classes.link}>
-        Download CSV
+        Download the CSV
       </Link>
     </section>
   )
