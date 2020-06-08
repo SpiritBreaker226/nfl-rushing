@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
 
     header: {
-      backgroundColor: '#1e1f21',
+      backgroundColor: theme.palette.secondary.main,
       padding: theme.spacing(2),
     },
   })
