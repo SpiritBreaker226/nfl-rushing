@@ -6,6 +6,6 @@ export default class ErrorBoundary extends Component {
   }
 
   render() {
-    return <section>{this.props.children}</section>
+    return this.props.children
   }
 }

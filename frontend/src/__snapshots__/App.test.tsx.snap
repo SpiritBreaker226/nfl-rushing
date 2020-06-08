@@ -2,682 +2,680 @@
 
 exports[`App fetch player data renders players component 1`] = `
 <main>
-  <section>
-    <header
-      class="makeStyles-header-3"
+  <header
+    class="makeStyles-header-3"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-container"
     >
       <div
-        class="MuiGrid-root MuiGrid-container"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
       >
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+        <h1
+          class="MuiTypography-root MuiTypography-h1"
         >
-          <h1
-            class="MuiTypography-root MuiTypography-h1"
+          Players
+        </h1>
+      </div>
+      <div
+        class="MuiGrid-root makeStyles-headerActions-2 MuiGrid-item MuiGrid-grid-xs-6"
+      >
+        <section>
+          <div
+            class="MuiFormControl-root MuiTextField-root makeStyles-searchText-4"
           >
-            Players
-          </h1>
-        </div>
-        <div
-          class="MuiGrid-root makeStyles-headerActions-2 MuiGrid-item MuiGrid-grid-xs-6"
-        >
-          <section>
             <div
-              class="MuiFormControl-root MuiTextField-root makeStyles-searchText-4"
+              class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
             >
-              <div
-                class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-              >
-                <input
-                  aria-invalid="false"
-                  class="MuiInputBase-input MuiInput-input"
-                  data-testid="searchBox"
-                  id="searchBox"
-                  name="searchBox"
-                  placeholder="Search by Name"
-                  type="text"
-                  value=""
-                />
-              </div>
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiInput-input"
+                data-testid="searchBox"
+                id="searchBox"
+                name="searchBox"
+                placeholder="Search by Name"
+                type="text"
+                value=""
+              />
             </div>
+          </div>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Search
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </section>
+      </div>
+      <div
+        class="MuiGrid-root makeStyles-headerActions-2 MuiGrid-item MuiGrid-grid-xs-4"
+      >
+        <section
+          class="makeStyles-download-5"
+        >
+          <a
+            class="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-link-6 MuiTypography-colorPrimary"
+            data-testid="download_csv"
+            href="http://localhost:3000/players.csv"
+          >
+            Download CSV
+          </a>
+        </section>
+      </div>
+    </div>
+  </header>
+  <div
+    class="makeStyles-appBody-1"
+  >
+    <section>
+      <div
+        class="MuiTableContainer-root"
+      >
+        <table
+          class="MuiTable-root"
+        >
+          <thead
+            class="MuiTableHead-root"
+          >
+            <tr
+              class="MuiTableRow-root MuiTableRow-head"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Player's Name
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Player's team abbreviation
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Player's postion
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Rushing Attempts
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Rushing Attempts Per Game Avg
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                <span
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiTableSortLabel-root"
+                  data-testid="yds"
+                  role="button"
+                  tabindex="0"
+                >
+                  Total Rushing Yards
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                    />
+                  </svg>
+                </span>
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Rushing Avg Yards Per Attempt
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Rushing Yards Per Game
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                <span
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiTableSortLabel-root"
+                  data-testid="td"
+                  role="button"
+                  tabindex="0"
+                >
+                  Total Rushing Touchdowns
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                    />
+                  </svg>
+                </span>
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                <span
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiTableSortLabel-root"
+                  data-testid="sortByLng"
+                  role="button"
+                  tabindex="0"
+                >
+                  Longest Rush
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                    />
+                  </svg>
+                </span>
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Rushing First Downs
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Rushing First Down %
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Rushing 20+ Yards Each
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Rushing 40+ Yards Each
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head"
+                role="columnheader"
+                scope="col"
+              >
+                Rushing Fumbles
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class="MuiTableBody-root"
+          >
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="2JAX"
+              >
+                2
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="2.0JAX"
+              >
+                2.0
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="3.5JAX"
+              >
+                3.5
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="0JAX"
+              >
+                0
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="0.0JAX"
+              >
+                0.0
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="0JAX"
+              >
+                0
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="0JAX"
+              >
+                0
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="7JAX"
+              >
+                7
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="Joe BanyardJAX"
+              >
+                Joe Banyard
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="RBJAX"
+              >
+                RB
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="0JAX"
+              >
+                0
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="JAXJAX"
+              >
+                JAX
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="0JAX"
+              >
+                0
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="7JAX"
+              >
+                7
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="7.0JAX"
+              >
+                7.0
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="205NO"
+              >
+                205
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="12.8NO"
+              >
+                12.8
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="5.1NO"
+              >
+                5.1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="49NO"
+              >
+                49
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="23.9NO"
+              >
+                23.9
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="2NO"
+              >
+                2
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="2NO"
+              >
+                2
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="75TNO"
+              >
+                75T
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="Mark IngramNO"
+              >
+                Mark Ingram
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="RBNO"
+              >
+                RB
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="6NO"
+              >
+                6
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="NONO"
+              >
+                NO
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="4NO"
+              >
+                4
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="1NO"
+              >
+                1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="65.2NO"
+              >
+                65.2
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="3GB"
+              >
+                3
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="0.8GB"
+              >
+                0.8
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="-0.7GB"
+              >
+                -0.7
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="0GB"
+              >
+                0
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="0.0GB"
+              >
+                0.0
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="0GB"
+              >
+                0
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="1GB"
+              >
+                1
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="0GB"
+              >
+                0
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="Brett HundleyGB"
+              >
+                Brett Hundley
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="QBGB"
+              >
+                QB
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="0GB"
+              >
+                0
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="GBGB"
+              >
+                GB
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="0GB"
+              >
+                0
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="-2GB"
+              >
+                -2
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+                data-testid="-0.5GB"
+              >
+                -0.5
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <nav
+        aria-label="pagination navigation"
+        class="MuiPagination-root makeStyles-pagination-8"
+        data-testid="pagination"
+      >
+        <ul
+          class="MuiPagination-ul"
+        >
+          <li>
             <button
-              class="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+              aria-label="Go to previous page"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded Mui-disabled Mui-disabled"
+              disabled=""
+              tabindex="-1"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiPaginationItem-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+                />
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button
+              aria-current="true"
+              aria-label="page 1"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded Mui-selected"
               tabindex="0"
               type="button"
             >
-              <span
-                class="MuiButton-label"
-              >
-                Search
-              </span>
+              1
               <span
                 class="MuiTouchRipple-root"
               />
             </button>
-          </section>
-        </div>
-        <div
-          class="MuiGrid-root makeStyles-headerActions-2 MuiGrid-item MuiGrid-grid-xs-4"
-        >
-          <section
-            class="makeStyles-download-5"
-          >
-            <a
-              class="MuiTypography-root MuiLink-root MuiLink-underlineHover makeStyles-link-6 MuiTypography-colorPrimary"
-              data-testid="download_csv"
-              href="http://localhost:3000/players.csv"
+          </li>
+          <li>
+            <button
+              aria-label="Go to page 2"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
+              tabindex="0"
+              type="button"
             >
-              Download CSV
-            </a>
-          </section>
-        </div>
-      </div>
-    </header>
-    <div
-      class="makeStyles-appBody-1"
-    >
-      <section>
-        <div
-          class="MuiTableContainer-root"
-        >
-          <table
-            class="MuiTable-root"
-          >
-            <thead
-              class="MuiTableHead-root"
+              2
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              aria-label="Go to page 3"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
+              tabindex="0"
+              type="button"
             >
-              <tr
-                class="MuiTableRow-root MuiTableRow-head"
-              >
-                <th
-                  class="MuiTableCell-root MuiTableCell-head"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Player's Name
-                </th>
-                <th
-                  class="MuiTableCell-root MuiTableCell-head"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Player's team abbreviation
-                </th>
-                <th
-                  class="MuiTableCell-root MuiTableCell-head"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Player's postion
-                </th>
-                <th
-                  class="MuiTableCell-root MuiTableCell-head"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Rushing Attempts
-                </th>
-                <th
-                  class="MuiTableCell-root MuiTableCell-head"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Rushing Attempts Per Game Avg
-                </th>
-                <th
-                  class="MuiTableCell-root MuiTableCell-head"
-                  role="columnheader"
-                  scope="col"
-                >
-                  <span
-                    aria-disabled="false"
-                    class="MuiButtonBase-root MuiTableSortLabel-root"
-                    data-testid="yds"
-                    role="button"
-                    tabindex="0"
-                  >
-                    Total Rushing Yards
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
-                      />
-                    </svg>
-                  </span>
-                </th>
-                <th
-                  class="MuiTableCell-root MuiTableCell-head"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Rushing Avg Yards Per Attempt
-                </th>
-                <th
-                  class="MuiTableCell-root MuiTableCell-head"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Rushing Yards Per Game
-                </th>
-                <th
-                  class="MuiTableCell-root MuiTableCell-head"
-                  role="columnheader"
-                  scope="col"
-                >
-                  <span
-                    aria-disabled="false"
-                    class="MuiButtonBase-root MuiTableSortLabel-root"
-                    data-testid="td"
-                    role="button"
-                    tabindex="0"
-                  >
-                    Total Rushing Touchdowns
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
-                      />
-                    </svg>
-                  </span>
-                </th>
-                <th
-                  class="MuiTableCell-root MuiTableCell-head"
-                  role="columnheader"
-                  scope="col"
-                >
-                  <span
-                    aria-disabled="false"
-                    class="MuiButtonBase-root MuiTableSortLabel-root"
-                    data-testid="sortByLng"
-                    role="button"
-                    tabindex="0"
-                  >
-                    Longest Rush
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
-                      />
-                    </svg>
-                  </span>
-                </th>
-                <th
-                  class="MuiTableCell-root MuiTableCell-head"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Rushing First Downs
-                </th>
-                <th
-                  class="MuiTableCell-root MuiTableCell-head"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Rushing First Down %
-                </th>
-                <th
-                  class="MuiTableCell-root MuiTableCell-head"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Rushing 20+ Yards Each
-                </th>
-                <th
-                  class="MuiTableCell-root MuiTableCell-head"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Rushing 40+ Yards Each
-                </th>
-                <th
-                  class="MuiTableCell-root MuiTableCell-head"
-                  role="columnheader"
-                  scope="col"
-                >
-                  Rushing Fumbles
-                </th>
-              </tr>
-            </thead>
-            <tbody
-              class="MuiTableBody-root"
+              3
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              aria-label="Go to page 4"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
+              tabindex="0"
+              type="button"
             >
-              <tr
-                class="MuiTableRow-root"
+              4
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              aria-label="Go to page 5"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
+              tabindex="0"
+              type="button"
+            >
+              5
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </li>
+          <li>
+            <div
+              class="MuiPaginationItem-root MuiPaginationItem-ellipsis"
+            >
+              …
+            </div>
+          </li>
+          <li>
+            <button
+              aria-label="Go to page 20"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
+              tabindex="0"
+              type="button"
+            >
+              20
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              aria-label="Go to next page"
+              class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiPaginationItem-icon"
+                focusable="false"
+                viewBox="0 0 24 24"
               >
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="2JAX"
-                >
-                  2
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="2.0JAX"
-                >
-                  2.0
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="3.5JAX"
-                >
-                  3.5
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="0JAX"
-                >
-                  0
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="0.0JAX"
-                >
-                  0.0
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="0JAX"
-                >
-                  0
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="0JAX"
-                >
-                  0
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="7JAX"
-                >
-                  7
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="Joe BanyardJAX"
-                >
-                  Joe Banyard
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="RBJAX"
-                >
-                  RB
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="0JAX"
-                >
-                  0
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="JAXJAX"
-                >
-                  JAX
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="0JAX"
-                >
-                  0
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="7JAX"
-                >
-                  7
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="7.0JAX"
-                >
-                  7.0
-                </td>
-              </tr>
-              <tr
-                class="MuiTableRow-root"
-              >
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="205NO"
-                >
-                  205
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="12.8NO"
-                >
-                  12.8
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="5.1NO"
-                >
-                  5.1
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="49NO"
-                >
-                  49
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="23.9NO"
-                >
-                  23.9
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="2NO"
-                >
-                  2
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="2NO"
-                >
-                  2
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="75TNO"
-                >
-                  75T
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="Mark IngramNO"
-                >
-                  Mark Ingram
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="RBNO"
-                >
-                  RB
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="6NO"
-                >
-                  6
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="NONO"
-                >
-                  NO
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="4NO"
-                >
-                  4
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="1NO"
-                >
-                  1
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="65.2NO"
-                >
-                  65.2
-                </td>
-              </tr>
-              <tr
-                class="MuiTableRow-root"
-              >
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="3GB"
-                >
-                  3
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="0.8GB"
-                >
-                  0.8
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="-0.7GB"
-                >
-                  -0.7
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="0GB"
-                >
-                  0
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="0.0GB"
-                >
-                  0.0
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="0GB"
-                >
-                  0
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="1GB"
-                >
-                  1
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="0GB"
-                >
-                  0
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="Brett HundleyGB"
-                >
-                  Brett Hundley
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="QBGB"
-                >
-                  QB
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="0GB"
-                >
-                  0
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="GBGB"
-                >
-                  GB
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="0GB"
-                >
-                  0
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="-2GB"
-                >
-                  -2
-                </td>
-                <td
-                  class="MuiTableCell-root MuiTableCell-body"
-                  data-testid="-0.5GB"
-                >
-                  -0.5
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <nav
-          aria-label="pagination navigation"
-          class="MuiPagination-root makeStyles-pagination-8"
-          data-testid="pagination"
-        >
-          <ul
-            class="MuiPagination-ul"
-          >
-            <li>
-              <button
-                aria-label="Go to previous page"
-                class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded Mui-disabled Mui-disabled"
-                disabled=""
-                tabindex="-1"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiPaginationItem-icon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-                  />
-                </svg>
-              </button>
-            </li>
-            <li>
-              <button
-                aria-current="true"
-                aria-label="page 1"
-                class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded Mui-selected"
-                tabindex="0"
-                type="button"
-              >
-                1
-                <span
-                  class="MuiTouchRipple-root"
+                <path
+                  d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
                 />
-              </button>
-            </li>
-            <li>
-              <button
-                aria-label="Go to page 2"
-                class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
-                tabindex="0"
-                type="button"
-              >
-                2
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </button>
-            </li>
-            <li>
-              <button
-                aria-label="Go to page 3"
-                class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
-                tabindex="0"
-                type="button"
-              >
-                3
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </button>
-            </li>
-            <li>
-              <button
-                aria-label="Go to page 4"
-                class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
-                tabindex="0"
-                type="button"
-              >
-                4
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </button>
-            </li>
-            <li>
-              <button
-                aria-label="Go to page 5"
-                class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
-                tabindex="0"
-                type="button"
-              >
-                5
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </button>
-            </li>
-            <li>
-              <div
-                class="MuiPaginationItem-root MuiPaginationItem-ellipsis"
-              >
-                …
-              </div>
-            </li>
-            <li>
-              <button
-                aria-label="Go to page 20"
-                class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
-                tabindex="0"
-                type="button"
-              >
-                20
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </button>
-            </li>
-            <li>
-              <button
-                aria-label="Go to next page"
-                class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-rounded"
-                tabindex="0"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiPaginationItem-icon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-                  />
-                </svg>
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </section>
-    </div>
-  </section>
+              </svg>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </div>
 </main>
 `;
