@@ -4,7 +4,7 @@ FactoryBot.define do
       longest_rush { Faker::Number.within(range: -10..10) }
     end
 
-    player { Faker::Sports::Football.player }
+    player { Faker::Name.name }
     team { Faker::Sports::Football.team }
     pos { ['WR', 'P', 'RB'].sample }
     att { Faker::Number.within(range: -10..10) }
