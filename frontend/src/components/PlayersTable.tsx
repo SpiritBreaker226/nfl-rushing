@@ -12,10 +12,9 @@ import { Pagination } from '@material-ui/lab'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 
 import { Player, Stats } from '../types/Players'
+import { Types } from '../types/Actions'
 
 import { AppContext } from '../contexts/AppContext'
-
-import { setParamsCallback } from './helpers/helpers'
 
 import PlayersTableHeader from './PlayersTableHeader'
 
@@ -45,11 +44,13 @@ const PlayersTable = () => {
       </section>
     )
   }
+
   const handleChangePage = (e: unknown, newPage: number) => {
-    setParamsCallback({
-      params: { page: newPage.toString() },
-      url: state.urlToPlayersEndpoint,
-      dispatch,
+    dispatch({
+      type: Types.UpdateURL,
+      payload: {
+        params: { page: newPage.toString() },
+      },
     })
   }
 

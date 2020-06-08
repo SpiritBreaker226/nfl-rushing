@@ -7,8 +7,6 @@ import { Types } from '../types/Actions'
 
 import { AppContext } from '../contexts/AppContext'
 
-import { setParamsCallback } from './helpers/helpers'
-
 const useStyles = makeStyles(() =>
   createStyles({
     searchText: {
@@ -32,10 +30,11 @@ const PlayersSearch = () => {
     })
   }
   const handleClickSearch = () => {
-    setParamsCallback({
-      params: { name: state.search, page: '1' },
-      url: state.urlToPlayersEndpoint,
-      dispatch,
+    dispatch({
+      type: Types.UpdateURL,
+      payload: {
+        params: { name: state.search, page: '1' },
+      },
     })
   }
   const handleTextFieldKeyPress = (e: KeyboardEvent) => {

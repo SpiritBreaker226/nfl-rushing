@@ -12,8 +12,6 @@ import { AppContext } from '../contexts/AppContext'
 import { Types } from '../types/Actions'
 import { Direction } from '../types/PlayerQuery'
 
-import { setParamsCallback } from './helpers/helpers'
-
 const headers = [
   { name: "Player's Name", sortByField: '' },
   { name: "Player's team abbreviation", sortByField: '' },
@@ -41,14 +39,15 @@ const PlayersTableHeader = () => {
     // reset direction on field change
     if (sortByField !== state.sorting.fieldName) dir = 'asc'
 
-    setParamsCallback({
-      params: {
-        sort_by: sortByField,
-        sort_by_dir: dir,
-        page: state.pagination.current_page.toString(),
+    dispatch({
+      type: Types.UpdateURL,
+      payload: {
+        params: {
+          sort_by: sortByField,
+          sort_by_dir: dir,
+          page: state.pagination.current_page.toString(),
+        },
       },
-      url: state.urlToPlayersEndpoint,
-      dispatch,
     })
 
     dispatch({

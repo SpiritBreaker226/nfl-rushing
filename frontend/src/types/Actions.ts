@@ -1,6 +1,6 @@
 import { Player } from './Players'
 import { Pagination } from './Pagination'
-import { Sorting } from './PlayerQuery'
+import { Sorting, PlayerQuery } from './PlayerQuery'
 
 export interface InitialState {
   players: Player[]
@@ -31,7 +31,7 @@ interface PlayersPayload {
 
 interface CallingServerPayload {
   [Types.UpdateURL]: {
-    url: string
+    params: PlayerQuery
   }
   [Types.UpdateLoading]: {
     isLoading: boolean

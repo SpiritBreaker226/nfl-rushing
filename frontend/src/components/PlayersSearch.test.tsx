@@ -27,7 +27,7 @@ describe('PlayersSearch', () => {
         }}
         dispatch={(action: Action) => {
           if (action.type === Types.UpdateURL) {
-            expect(action.payload.url).toEqual(`?name=joe&page=1`)
+            expect(action.payload.params.name).toEqual('joe')
           }
         }}
       >

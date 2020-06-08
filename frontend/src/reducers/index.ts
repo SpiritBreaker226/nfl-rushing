@@ -1,3 +1,5 @@
+import queryString from 'query-string'
+
 import { Types, InitialState, Action } from '../types/Actions'
 
 export const playersReducer = (state: InitialState, action: Action) => {
@@ -17,7 +19,20 @@ export const playersReducer = (state: InitialState, action: Action) => {
 export const callingServerReducer = (state: InitialState, action: Action) => {
   switch (action.type) {
     case Types.UpdateURL:
-      return { ...state, urlToPlayersEndpoint: action.payload.url }
+      const currentURL = queryString.parseUrl(state.urlToPlayersEndpoint)
+      const query = { ...currentURL.query, ...action.payload.params }
+      const newUrl = queryString.stringifyUrl(
+        {
+          url: currentURL.url,
+          query,
+        },
+        {
+          skipEmptyString: true,
+          skipNull: true,
+        }
+      )
+
+      return { ...state, urlToPlayersEndpoint: newUrl }
     case Types.UpdateLoading:
       return { ...state, isLoading: action.payload.isLoading }
     case Types.UpdateErrorMessageFromServer:
