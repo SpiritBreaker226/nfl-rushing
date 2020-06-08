@@ -1,5 +1,9 @@
 FactoryBot.define do
   factory :player do
+    transient do
+      longest_rush { Faker::Number.within(range: -10..10) }
+    end
+
     player { Faker::Sports::Football.player }
     team { Faker::Sports::Football.team }
     pos { ['WR', 'P', 'RB'].sample }
@@ -9,8 +13,8 @@ FactoryBot.define do
     avg { Faker::Number.decimal(l_digits: 2) }
     ydsg { Faker::Number.decimal(l_digits: 2) }
     td { Faker::Number.within(range: -10..10) }
-    lng { Faker::Number.within(range: -10..10).to_s }
-    sortByLng { Faker::Number.within(range: -10..10) }
+    lng { [longest_rush.to_s, "#{longest_rush.to_s}T"].sample }
+    sortByLng { longest_rush }
     first { Faker::Number.within(range: -10..10) }
     first_precentage { Faker::Number.decimal(l_digits: 2) }
     twenty_plus { Faker::Number.within(range: -10..10) }
