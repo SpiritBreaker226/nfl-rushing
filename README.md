@@ -62,6 +62,16 @@ We will evaluate you on your ability to solve the problem defined in the require
 
 If you have any questions regarding requirements, do not hesitate to email your contact at theScore for clarification.
 
+#### Questions & Awnsers
+
+Here are the questions and answers to give some context during the creation of this project:
+
+1. Q: If there is no sorting selected, can the default sorted be the player's names?
+   A: Sure!
+
+2. Q: If two or more players have the same sorted value, can they then be sorted by their name?
+   A: Sure!
+
 ### Installation and running this solution
 
 #### Installation
