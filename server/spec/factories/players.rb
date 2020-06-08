@@ -5,7 +5,7 @@ FactoryBot.define do
     end
 
     player { Faker::Name.name }
-    team { Faker::Sports::Football.team }
+    team { ['CLE', 'NE', 'DET', 'HOU', 'TEN', 'CIN'].sample }
     pos { ['WR', 'P', 'RB'].sample }
     att { Faker::Number.within(range: -10..10) }
     attg { Faker::Number.decimal(l_digits: 2) }
