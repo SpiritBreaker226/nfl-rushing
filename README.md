@@ -107,6 +107,7 @@ From the 'server' directory
 - To run the test with code coverage use the commend `rspec`
   - To open code coverage in the 'server' directory type `open coverage/index.html`
 - To add 10,000 more players run `rails db:seed:league` or `rails db:seed:league[any number of players]`
+  - Warning: Depending on your computer this will take awhile to create
   - If you are using Zsh you will need to use `\[` and `\]` around the arguments as it does parse rails
     task correctly for example `rails db:seed:league\["10"\]`
 
