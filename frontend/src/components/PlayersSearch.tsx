@@ -38,10 +38,8 @@ const PlayersSearch = () => {
     })
   }
   const handleTextFieldKeyPress = (e: KeyboardEvent) => {
-    switch (e.key) {
-      case 'Enter':
-        handleClickSearch()
-        break
+    if (e.key === 'Enter') {
+      handleClickSearch()
     }
   }
 
