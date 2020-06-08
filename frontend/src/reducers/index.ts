@@ -8,7 +8,7 @@ export const playersReducer = (state: InitialState, action: Action) => {
       return {
         ...state,
         isLoading: action.payload.isLoading,
-        players: action.payload.players || [],
+        players: action.payload.players,
         pagination: action.payload.pagination,
       }
     default:
