@@ -1,12 +1,7 @@
 import React from 'react'
 
-import { Grid, Typography, CssBaseline } from '@material-ui/core'
-import {
-  createStyles,
-  makeStyles,
-  Theme,
-  ThemeProvider,
-} from '@material-ui/core/styles'
+import { Grid, Typography } from '@material-ui/core'
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 
 import FetchData from './components/FetchData'
 import PlayersTable from './components/PlayersTable'
@@ -15,8 +10,6 @@ import PlayersDownload from './components/PlayersDownload'
 import ErrorBoundary from './components/ErrorBoundary'
 
 import { AppProvider } from './contexts/AppContext'
-
-import theme from './theme'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,34 +34,30 @@ function App() {
   const classes = useStyles()
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-
-      <main>
-        <ErrorBoundary>
-          <AppProvider>
-            <header className={classes.header}>
-              <Grid container>
-                <Grid item xs={2}>
-                  <Typography variant="h1">Players</Typography>
-                </Grid>
-                <Grid item xs={6} className={classes.headerActions}>
-                  <PlayersSearch />
-                </Grid>
-                <Grid item xs={4} className={classes.headerActions}>
-                  <PlayersDownload />
-                </Grid>
+    <main>
+      <ErrorBoundary>
+        <AppProvider>
+          <header className={classes.header}>
+            <Grid container>
+              <Grid item xs={2}>
+                <Typography variant="h1">Players</Typography>
               </Grid>
-            </header>
+              <Grid item xs={6} className={classes.headerActions}>
+                <PlayersSearch />
+              </Grid>
+              <Grid item xs={4} className={classes.headerActions}>
+                <PlayersDownload />
+              </Grid>
+            </Grid>
+          </header>
 
-            <div className={classes.appBody}>
-              <PlayersTable />
-              <FetchData />
-            </div>
-          </AppProvider>
-        </ErrorBoundary>
-      </main>
-    </ThemeProvider>
+          <div className={classes.appBody}>
+            <PlayersTable />
+            <FetchData />
+          </div>
+        </AppProvider>
+      </ErrorBoundary>
+    </main>
   )
 }
 
